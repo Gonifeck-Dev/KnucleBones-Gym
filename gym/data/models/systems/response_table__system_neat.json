@@ -1,0 +1,175 @@
+{
+  "created_utc": "20260304_070052",
+  "kmeans_artifact": "gym/data/models/kmeans/kmeans__v2__k4__win6__seed123.joblib",
+  "metric": "winrate_decided",
+  "swap_roles": true,
+  "games_per_cluster_base": 3000,
+  "clusters": {
+    "0": {
+      "style": "heuristic_greedy",
+      "opponent_spec": "heuristic:greedy",
+      "candidates": {
+        "neat:gym/data/models/neat/neat__vs_heuristic_denial.pkl:gym/config/neat/neat_config.ini": {
+          "games": 6000,
+          "wins_candidate": 3374,
+          "wins_opponent": 2522,
+          "ties": 104,
+          "winrate_candidate": 0.5623333333333334,
+          "winrate_candidate_decided": 0.5722523744911805,
+          "avg_score_diff_candidate_minus_opp": 3.3753333333333333,
+          "avg_turns": 23.248
+        },
+        "neat:gym/data/models/neat/neat__vs_heuristic_spread.pkl:gym/config/neat/neat_config.ini": {
+          "games": 6000,
+          "wins_candidate": 2936,
+          "wins_opponent": 2948,
+          "ties": 116,
+          "winrate_candidate": 0.48933333333333334,
+          "winrate_candidate_decided": 0.4989802855200544,
+          "avg_score_diff_candidate_minus_opp": -0.42716666666666664,
+          "avg_turns": 22.5165
+        },
+        "neat:gym/data/models/neat/neat__vs_heuristic_greedy.pkl:gym/config/neat/neat_config.ini": {
+          "games": 6000,
+          "wins_candidate": 2936,
+          "wins_opponent": 2948,
+          "ties": 116,
+          "winrate_candidate": 0.48933333333333334,
+          "winrate_candidate_decided": 0.4989802855200544,
+          "avg_score_diff_candidate_minus_opp": -0.42716666666666664,
+          "avg_turns": 22.5165
+        }
+      },
+      "selected_policy_spec": "neat:gym/data/models/neat/neat__vs_heuristic_denial.pkl:gym/config/neat/neat_config.ini",
+      "selected_score": 0.5722523744911805
+    },
+    "1": {
+      "style": "heuristic_denial",
+      "opponent_spec": "heuristic:denial",
+      "candidates": {
+        "neat:gym/data/models/neat/neat__vs_heuristic_denial.pkl:gym/config/neat/neat_config.ini": {
+          "games": 6000,
+          "wins_candidate": 3468,
+          "wins_opponent": 2402,
+          "ties": 130,
+          "winrate_candidate": 0.578,
+          "winrate_candidate_decided": 0.5908006814310051,
+          "avg_score_diff_candidate_minus_opp": 3.9035,
+          "avg_turns": 23.655833333333334
+        },
+        "neat:gym/data/models/neat/neat__vs_heuristic_spread.pkl:gym/config/neat/neat_config.ini": {
+          "games": 6000,
+          "wins_candidate": 2916,
+          "wins_opponent": 2947,
+          "ties": 137,
+          "winrate_candidate": 0.486,
+          "winrate_candidate_decided": 0.497356302234351,
+          "avg_score_diff_candidate_minus_opp": -0.3368333333333333,
+          "avg_turns": 22.564333333333334
+        },
+        "neat:gym/data/models/neat/neat__vs_heuristic_greedy.pkl:gym/config/neat/neat_config.ini": {
+          "games": 6000,
+          "wins_candidate": 2916,
+          "wins_opponent": 2947,
+          "ties": 137,
+          "winrate_candidate": 0.486,
+          "winrate_candidate_decided": 0.497356302234351,
+          "avg_score_diff_candidate_minus_opp": -0.3368333333333333,
+          "avg_turns": 22.564333333333334
+        }
+      },
+      "selected_policy_spec": "neat:gym/data/models/neat/neat__vs_heuristic_denial.pkl:gym/config/neat/neat_config.ini",
+      "selected_score": 0.5908006814310051
+    },
+    "2": {
+      "style": "heuristic_denial",
+      "opponent_spec": "heuristic:denial",
+      "candidates": {
+        "neat:gym/data/models/neat/neat__vs_heuristic_denial.pkl:gym/config/neat/neat_config.ini": {
+          "games": 6000,
+          "wins_candidate": 3389,
+          "wins_opponent": 2479,
+          "ties": 132,
+          "winrate_candidate": 0.5648333333333333,
+          "winrate_candidate_decided": 0.5775391956373551,
+          "avg_score_diff_candidate_minus_opp": 3.887166666666667,
+          "avg_turns": 23.769833333333334
+        },
+        "neat:gym/data/models/neat/neat__vs_heuristic_spread.pkl:gym/config/neat/neat_config.ini": {
+          "games": 6000,
+          "wins_candidate": 2881,
+          "wins_opponent": 2978,
+          "ties": 141,
+          "winrate_candidate": 0.4801666666666667,
+          "winrate_candidate_decided": 0.4917221368834272,
+          "avg_score_diff_candidate_minus_opp": -0.08616666666666667,
+          "avg_turns": 22.5545
+        },
+        "neat:gym/data/models/neat/neat__vs_heuristic_greedy.pkl:gym/config/neat/neat_config.ini": {
+          "games": 6000,
+          "wins_candidate": 2881,
+          "wins_opponent": 2978,
+          "ties": 141,
+          "winrate_candidate": 0.4801666666666667,
+          "winrate_candidate_decided": 0.4917221368834272,
+          "avg_score_diff_candidate_minus_opp": -0.08616666666666667,
+          "avg_turns": 22.5545
+        }
+      },
+      "selected_policy_spec": "neat:gym/data/models/neat/neat__vs_heuristic_denial.pkl:gym/config/neat/neat_config.ini",
+      "selected_score": 0.5775391956373551
+    },
+    "3": {
+      "style": "heuristic_spread",
+      "opponent_spec": "heuristic:spread",
+      "candidates": {
+        "neat:gym/data/models/neat/neat__vs_heuristic_denial.pkl:gym/config/neat/neat_config.ini": {
+          "games": 6000,
+          "wins_candidate": 3800,
+          "wins_opponent": 2080,
+          "ties": 120,
+          "winrate_candidate": 0.6333333333333333,
+          "winrate_candidate_decided": 0.6462585034013606,
+          "avg_score_diff_candidate_minus_opp": 8.3795,
+          "avg_turns": 23.299333333333333
+        },
+        "neat:gym/data/models/neat/neat__vs_heuristic_spread.pkl:gym/config/neat/neat_config.ini": {
+          "games": 6000,
+          "wins_candidate": 3705,
+          "wins_opponent": 2172,
+          "ties": 123,
+          "winrate_candidate": 0.6175,
+          "winrate_candidate_decided": 0.630423685553854,
+          "avg_score_diff_candidate_minus_opp": 6.788333333333333,
+          "avg_turns": 23.038666666666668
+        },
+        "neat:gym/data/models/neat/neat__vs_heuristic_greedy.pkl:gym/config/neat/neat_config.ini": {
+          "games": 6000,
+          "wins_candidate": 3705,
+          "wins_opponent": 2172,
+          "ties": 123,
+          "winrate_candidate": 0.6175,
+          "winrate_candidate_decided": 0.630423685553854,
+          "avg_score_diff_candidate_minus_opp": 6.788333333333333,
+          "avg_turns": 23.038666666666668
+        }
+      },
+      "selected_policy_spec": "neat:gym/data/models/neat/neat__vs_heuristic_denial.pkl:gym/config/neat/neat_config.ini",
+      "selected_score": 0.6462585034013606
+    }
+  },
+  "cluster_to_policy_spec": {
+    "0": "neat:gym/data/models/neat/neat__vs_heuristic_denial.pkl:gym/config/neat/neat_config.ini",
+    "1": "neat:gym/data/models/neat/neat__vs_heuristic_denial.pkl:gym/config/neat/neat_config.ini",
+    "2": "neat:gym/data/models/neat/neat__vs_heuristic_denial.pkl:gym/config/neat/neat_config.ini",
+    "3": "neat:gym/data/models/neat/neat__vs_heuristic_denial.pkl:gym/config/neat/neat_config.ini"
+  },
+  "cluster_to_style": {
+    "0": "heuristic_greedy",
+    "1": "heuristic_denial",
+    "2": "heuristic_denial",
+    "3": "heuristic_spread"
+  },
+  "wall_time_seconds": 182.86,
+  "total_games_evaluated": 72000
+}

@@ -1,0 +1,175 @@
+{
+  "created_utc": "20260304_030644",
+  "kmeans_artifact": "gym/data/models/kmeans/kmeans__v2__k4__win6__seed123.joblib",
+  "metric": "winrate_decided",
+  "swap_roles": true,
+  "games_per_cluster_base": 3000,
+  "clusters": {
+    "0": {
+      "style": "heuristic_greedy",
+      "opponent_spec": "heuristic:greedy",
+      "candidates": {
+        "dt:gym/data/models/sklearn/dt__ppo_vs_denial.joblib": {
+          "games": 6000,
+          "wins_candidate": 3404,
+          "wins_opponent": 2480,
+          "ties": 116,
+          "winrate_candidate": 0.5673333333333334,
+          "winrate_candidate_decided": 0.5785180149558123,
+          "avg_score_diff_candidate_minus_opp": 3.903,
+          "avg_turns": 22.421
+        },
+        "dt:gym/data/models/sklearn/dt__ppo_vs_spread.joblib": {
+          "games": 6000,
+          "wins_candidate": 3152,
+          "wins_opponent": 2732,
+          "ties": 116,
+          "winrate_candidate": 0.5253333333333333,
+          "winrate_candidate_decided": 0.5356900067980965,
+          "avg_score_diff_candidate_minus_opp": 1.446,
+          "avg_turns": 22.429166666666667
+        },
+        "dt:gym/data/models/sklearn/dt__ppo_vs_greedy.joblib": {
+          "games": 6000,
+          "wins_candidate": 3471,
+          "wins_opponent": 2398,
+          "ties": 131,
+          "winrate_candidate": 0.5785,
+          "winrate_candidate_decided": 0.5914125063895042,
+          "avg_score_diff_candidate_minus_opp": 4.607333333333333,
+          "avg_turns": 22.8105
+        }
+      },
+      "selected_policy_spec": "dt:gym/data/models/sklearn/dt__ppo_vs_greedy.joblib",
+      "selected_score": 0.5914125063895042
+    },
+    "1": {
+      "style": "heuristic_denial",
+      "opponent_spec": "heuristic:denial",
+      "candidates": {
+        "dt:gym/data/models/sklearn/dt__ppo_vs_denial.joblib": {
+          "games": 6000,
+          "wins_candidate": 3435,
+          "wins_opponent": 2433,
+          "ties": 132,
+          "winrate_candidate": 0.5725,
+          "winrate_candidate_decided": 0.5853783231083844,
+          "avg_score_diff_candidate_minus_opp": 4.022333333333333,
+          "avg_turns": 22.637666666666668
+        },
+        "dt:gym/data/models/sklearn/dt__ppo_vs_spread.joblib": {
+          "games": 6000,
+          "wins_candidate": 3115,
+          "wins_opponent": 2763,
+          "ties": 122,
+          "winrate_candidate": 0.5191666666666667,
+          "winrate_candidate_decided": 0.5299421571963253,
+          "avg_score_diff_candidate_minus_opp": 1.2998333333333334,
+          "avg_turns": 22.565833333333334
+        },
+        "dt:gym/data/models/sklearn/dt__ppo_vs_greedy.joblib": {
+          "games": 6000,
+          "wins_candidate": 3495,
+          "wins_opponent": 2380,
+          "ties": 125,
+          "winrate_candidate": 0.5825,
+          "winrate_candidate_decided": 0.5948936170212766,
+          "avg_score_diff_candidate_minus_opp": 4.715,
+          "avg_turns": 23.108333333333334
+        }
+      },
+      "selected_policy_spec": "dt:gym/data/models/sklearn/dt__ppo_vs_greedy.joblib",
+      "selected_score": 0.5948936170212766
+    },
+    "2": {
+      "style": "heuristic_denial",
+      "opponent_spec": "heuristic:denial",
+      "candidates": {
+        "dt:gym/data/models/sklearn/dt__ppo_vs_denial.joblib": {
+          "games": 6000,
+          "wins_candidate": 3362,
+          "wins_opponent": 2507,
+          "ties": 131,
+          "winrate_candidate": 0.5603333333333333,
+          "winrate_candidate_decided": 0.5728403475890271,
+          "avg_score_diff_candidate_minus_opp": 3.6641666666666666,
+          "avg_turns": 22.7075
+        },
+        "dt:gym/data/models/sklearn/dt__ppo_vs_spread.joblib": {
+          "games": 6000,
+          "wins_candidate": 3093,
+          "wins_opponent": 2774,
+          "ties": 133,
+          "winrate_candidate": 0.5155,
+          "winrate_candidate_decided": 0.5271859553434464,
+          "avg_score_diff_candidate_minus_opp": 1.1193333333333333,
+          "avg_turns": 22.525833333333335
+        },
+        "dt:gym/data/models/sklearn/dt__ppo_vs_greedy.joblib": {
+          "games": 6000,
+          "wins_candidate": 3425,
+          "wins_opponent": 2450,
+          "ties": 125,
+          "winrate_candidate": 0.5708333333333333,
+          "winrate_candidate_decided": 0.5829787234042553,
+          "avg_score_diff_candidate_minus_opp": 4.4925,
+          "avg_turns": 23.200333333333333
+        }
+      },
+      "selected_policy_spec": "dt:gym/data/models/sklearn/dt__ppo_vs_greedy.joblib",
+      "selected_score": 0.5829787234042553
+    },
+    "3": {
+      "style": "heuristic_spread",
+      "opponent_spec": "heuristic:spread",
+      "candidates": {
+        "dt:gym/data/models/sklearn/dt__ppo_vs_denial.joblib": {
+          "games": 6000,
+          "wins_candidate": 3796,
+          "wins_opponent": 2090,
+          "ties": 114,
+          "winrate_candidate": 0.6326666666666667,
+          "winrate_candidate_decided": 0.6449201495073055,
+          "avg_score_diff_candidate_minus_opp": 7.856833333333333,
+          "avg_turns": 22.784833333333335
+        },
+        "dt:gym/data/models/sklearn/dt__ppo_vs_spread.joblib": {
+          "games": 6000,
+          "wins_candidate": 3749,
+          "wins_opponent": 2138,
+          "ties": 113,
+          "winrate_candidate": 0.6248333333333334,
+          "winrate_candidate_decided": 0.6368269067436725,
+          "avg_score_diff_candidate_minus_opp": 7.4285,
+          "avg_turns": 22.952166666666667
+        },
+        "dt:gym/data/models/sklearn/dt__ppo_vs_greedy.joblib": {
+          "games": 6000,
+          "wins_candidate": 3766,
+          "wins_opponent": 2118,
+          "ties": 116,
+          "winrate_candidate": 0.6276666666666667,
+          "winrate_candidate_decided": 0.6400407885791978,
+          "avg_score_diff_candidate_minus_opp": 8.0815,
+          "avg_turns": 22.920666666666666
+        }
+      },
+      "selected_policy_spec": "dt:gym/data/models/sklearn/dt__ppo_vs_denial.joblib",
+      "selected_score": 0.6449201495073055
+    }
+  },
+  "cluster_to_policy_spec": {
+    "0": "dt:gym/data/models/sklearn/dt__ppo_vs_greedy.joblib",
+    "1": "dt:gym/data/models/sklearn/dt__ppo_vs_greedy.joblib",
+    "2": "dt:gym/data/models/sklearn/dt__ppo_vs_greedy.joblib",
+    "3": "dt:gym/data/models/sklearn/dt__ppo_vs_denial.joblib"
+  },
+  "cluster_to_style": {
+    "0": "heuristic_greedy",
+    "1": "heuristic_denial",
+    "2": "heuristic_denial",
+    "3": "heuristic_spread"
+  },
+  "wall_time_seconds": 207.61,
+  "total_games_evaluated": 72000
+}

@@ -1,0 +1,7 @@
+{
+  "name": "system_dt",
+  "kmeans_artifact": "gym/data/models/kmeans/kmeans__v2__k4__win6__seed123.joblib",
+  "response_table": "gym/data/models/systems/response_table__system_dt.json",
+  "my_player_id": 0,
+  "fallback_policy_spec": "dt:gym/data/models/sklearn/dt__ppo_vs_denial.joblib"
+}

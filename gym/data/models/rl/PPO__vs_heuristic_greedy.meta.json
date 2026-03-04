@@ -1,0 +1,15 @@
+{
+  "created_utc": "20260304_015210",
+  "algo": "PPO",
+  "timesteps": 400000,
+  "seed": 123,
+  "opponent": "heuristic:greedy",
+  "reward_mode": "diff_delta",
+  "model_path": "gym\\data\\models\\rl\\PPO__vs_heuristic_greedy.zip",
+  "obs_features": 21,
+  "feature_extractor": "gym.policies.utils.features.extract_features",
+  "wall_time_seconds": 650.549,
+  "model_size_bytes": 165396,
+  "peak_memory_mb": null,
+  "training_log": "gym\\data\\models\\rl\\PPO__vs_heuristic_greedy.training_log.jsonl"
+}

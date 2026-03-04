@@ -1,0 +1,7 @@
+{
+  "name": "system_ppo",
+  "kmeans_artifact": "gym/data/models/kmeans/kmeans__v2__k4__win6__seed123.joblib",
+  "response_table": "gym/data/models/systems/response_table__system_ppo.json",
+  "my_player_id": 0,
+  "fallback_policy_spec": "rl:PPO:gym/data/models/rl/PPO__vs_heuristic_denial.zip"
+}

@@ -1,0 +1,175 @@
+{
+  "created_utc": "20260304_034135",
+  "kmeans_artifact": "gym/data/models/kmeans/kmeans__v2__k4__win6__seed123.joblib",
+  "metric": "winrate_decided",
+  "swap_roles": true,
+  "games_per_cluster_base": 3000,
+  "clusters": {
+    "0": {
+      "style": "heuristic_greedy",
+      "opponent_spec": "heuristic:greedy",
+      "candidates": {
+        "rl:PPO:gym/data/models/rl/PPO__vs_heuristic_denial.zip": {
+          "games": 6000,
+          "wins_candidate": 3375,
+          "wins_opponent": 2504,
+          "ties": 121,
+          "winrate_candidate": 0.5625,
+          "winrate_candidate_decided": 0.5740772240176901,
+          "avg_score_diff_candidate_minus_opp": 3.7306666666666666,
+          "avg_turns": 22.441333333333333
+        },
+        "rl:PPO:gym/data/models/rl/PPO__vs_heuristic_spread.zip": {
+          "games": 6000,
+          "wins_candidate": 3106,
+          "wins_opponent": 2772,
+          "ties": 122,
+          "winrate_candidate": 0.5176666666666667,
+          "winrate_candidate_decided": 0.5284110241578768,
+          "avg_score_diff_candidate_minus_opp": 1.192,
+          "avg_turns": 22.439666666666668
+        },
+        "rl:PPO:gym/data/models/rl/PPO__vs_heuristic_greedy.zip": {
+          "games": 6000,
+          "wins_candidate": 3445,
+          "wins_opponent": 2432,
+          "ties": 123,
+          "winrate_candidate": 0.5741666666666667,
+          "winrate_candidate_decided": 0.5861834269184958,
+          "avg_score_diff_candidate_minus_opp": 4.3185,
+          "avg_turns": 22.8125
+        }
+      },
+      "selected_policy_spec": "rl:PPO:gym/data/models/rl/PPO__vs_heuristic_greedy.zip",
+      "selected_score": 0.5861834269184958
+    },
+    "1": {
+      "style": "heuristic_denial",
+      "opponent_spec": "heuristic:denial",
+      "candidates": {
+        "rl:PPO:gym/data/models/rl/PPO__vs_heuristic_denial.zip": {
+          "games": 6000,
+          "wins_candidate": 3407,
+          "wins_opponent": 2470,
+          "ties": 123,
+          "winrate_candidate": 0.5678333333333333,
+          "winrate_candidate_decided": 0.5797175429640973,
+          "avg_score_diff_candidate_minus_opp": 3.6483333333333334,
+          "avg_turns": 22.729
+        },
+        "rl:PPO:gym/data/models/rl/PPO__vs_heuristic_spread.zip": {
+          "games": 6000,
+          "wins_candidate": 3148,
+          "wins_opponent": 2733,
+          "ties": 119,
+          "winrate_candidate": 0.5246666666666666,
+          "winrate_candidate_decided": 0.5352831151164767,
+          "avg_score_diff_candidate_minus_opp": 1.511,
+          "avg_turns": 22.562
+        },
+        "rl:PPO:gym/data/models/rl/PPO__vs_heuristic_greedy.zip": {
+          "games": 6000,
+          "wins_candidate": 3480,
+          "wins_opponent": 2405,
+          "ties": 115,
+          "winrate_candidate": 0.58,
+          "winrate_candidate_decided": 0.5913338997451147,
+          "avg_score_diff_candidate_minus_opp": 4.347166666666666,
+          "avg_turns": 23.121833333333335
+        }
+      },
+      "selected_policy_spec": "rl:PPO:gym/data/models/rl/PPO__vs_heuristic_greedy.zip",
+      "selected_score": 0.5913338997451147
+    },
+    "2": {
+      "style": "heuristic_denial",
+      "opponent_spec": "heuristic:denial",
+      "candidates": {
+        "rl:PPO:gym/data/models/rl/PPO__vs_heuristic_denial.zip": {
+          "games": 6000,
+          "wins_candidate": 3366,
+          "wins_opponent": 2503,
+          "ties": 131,
+          "winrate_candidate": 0.561,
+          "winrate_candidate_decided": 0.5735218947009713,
+          "avg_score_diff_candidate_minus_opp": 3.608833333333333,
+          "avg_turns": 22.794166666666666
+        },
+        "rl:PPO:gym/data/models/rl/PPO__vs_heuristic_spread.zip": {
+          "games": 6000,
+          "wins_candidate": 3133,
+          "wins_opponent": 2736,
+          "ties": 131,
+          "winrate_candidate": 0.5221666666666667,
+          "winrate_candidate_decided": 0.5338217754302266,
+          "avg_score_diff_candidate_minus_opp": 1.3171666666666666,
+          "avg_turns": 22.528333333333332
+        },
+        "rl:PPO:gym/data/models/rl/PPO__vs_heuristic_greedy.zip": {
+          "games": 6000,
+          "wins_candidate": 3406,
+          "wins_opponent": 2476,
+          "ties": 118,
+          "winrate_candidate": 0.5676666666666667,
+          "winrate_candidate_decided": 0.579054743284597,
+          "avg_score_diff_candidate_minus_opp": 4.232833333333334,
+          "avg_turns": 23.268333333333334
+        }
+      },
+      "selected_policy_spec": "rl:PPO:gym/data/models/rl/PPO__vs_heuristic_greedy.zip",
+      "selected_score": 0.579054743284597
+    },
+    "3": {
+      "style": "heuristic_spread",
+      "opponent_spec": "heuristic:spread",
+      "candidates": {
+        "rl:PPO:gym/data/models/rl/PPO__vs_heuristic_denial.zip": {
+          "games": 6000,
+          "wins_candidate": 3800,
+          "wins_opponent": 2091,
+          "ties": 109,
+          "winrate_candidate": 0.6333333333333333,
+          "winrate_candidate_decided": 0.6450517738923782,
+          "avg_score_diff_candidate_minus_opp": 7.6655,
+          "avg_turns": 22.8105
+        },
+        "rl:PPO:gym/data/models/rl/PPO__vs_heuristic_spread.zip": {
+          "games": 6000,
+          "wins_candidate": 3749,
+          "wins_opponent": 2142,
+          "ties": 109,
+          "winrate_candidate": 0.6248333333333334,
+          "winrate_candidate_decided": 0.6363945000848752,
+          "avg_score_diff_candidate_minus_opp": 7.441166666666667,
+          "avg_turns": 22.929
+        },
+        "rl:PPO:gym/data/models/rl/PPO__vs_heuristic_greedy.zip": {
+          "games": 6000,
+          "wins_candidate": 3730,
+          "wins_opponent": 2156,
+          "ties": 114,
+          "winrate_candidate": 0.6216666666666667,
+          "winrate_candidate_decided": 0.6337071015970098,
+          "avg_score_diff_candidate_minus_opp": 7.943666666666667,
+          "avg_turns": 22.982
+        }
+      },
+      "selected_policy_spec": "rl:PPO:gym/data/models/rl/PPO__vs_heuristic_denial.zip",
+      "selected_score": 0.6450517738923782
+    }
+  },
+  "cluster_to_policy_spec": {
+    "0": "rl:PPO:gym/data/models/rl/PPO__vs_heuristic_greedy.zip",
+    "1": "rl:PPO:gym/data/models/rl/PPO__vs_heuristic_greedy.zip",
+    "2": "rl:PPO:gym/data/models/rl/PPO__vs_heuristic_greedy.zip",
+    "3": "rl:PPO:gym/data/models/rl/PPO__vs_heuristic_denial.zip"
+  },
+  "cluster_to_style": {
+    "0": "heuristic_greedy",
+    "1": "heuristic_denial",
+    "2": "heuristic_denial",
+    "3": "heuristic_spread"
+  },
+  "wall_time_seconds": 399.724,
+  "total_games_evaluated": 72000
+}

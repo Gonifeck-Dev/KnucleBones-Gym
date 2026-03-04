@@ -1,0 +1,15 @@
+{
+  "created_utc": "20260304_011303",
+  "algo": "PPO",
+  "timesteps": 400000,
+  "seed": 123,
+  "opponent": "heuristic:denial",
+  "reward_mode": "diff_delta",
+  "model_path": "gym\\data\\models\\rl\\PPO__vs_heuristic_denial.zip",
+  "obs_features": 21,
+  "feature_extractor": "gym.policies.utils.features.extract_features",
+  "wall_time_seconds": 783.611,
+  "model_size_bytes": 165396,
+  "peak_memory_mb": null,
+  "training_log": "gym\\data\\models\\rl\\PPO__vs_heuristic_denial.training_log.jsonl"
+}
