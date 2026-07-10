@@ -1,0 +1,28 @@
+\babel@toc {spanish}{}\relax 
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Evolución del alcance del proyecto}}{3}{figure.caption.9}%
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Prototipo exploratorio FPS}}{3}{figure.caption.10}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Arquitectura general del sistema}}{24}{figure.caption.12}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Prototipo funcional de Knucklebones en Unity}}{26}{figure.caption.14}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Flujo de decisión por turno}}{27}{figure.caption.15}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Middleware local en ejecución}}{27}{figure.caption.16}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Tiempos de entrenamiento por paradigma}}{35}{figure.caption.18}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Tamaño de modelo por paradigma}}{35}{figure.caption.19}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Brecha de datos: entrenamiento vs.\ sesión real}}{36}{figure.caption.21}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Diferencial de puntaje --- DT}}{40}{figure.caption.29}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Diferencial de puntaje --- PPO}}{40}{figure.caption.30}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Diferencial de puntaje --- NEAT}}{41}{figure.caption.31}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Diferencial de puntaje --- Sistemas adaptativos}}{41}{figure.caption.32}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Mapa de calor de evaluación cruzada}}{45}{figure.caption.39}%
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Evolución de fitness NEAT multi-seed}}{46}{figure.caption.41}%
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Comparativa consolidada de paradigmas}}{47}{figure.caption.43}%
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Winrate por sistema y oponente}}{48}{figure.caption.44}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Carta Gantt --- Parte 1 (abril--julio 2025)}}{56}{figure.caption.47}%
+\contentsline {figure}{\numberline {A.2}{\ignorespaces Carta Gantt --- Parte 2 (agosto--diciembre 2025)}}{57}{figure.caption.48}%
+\contentsline {figure}{\numberline {A.3}{\ignorespaces Carta Gantt --- Parte 3 (enero--marzo 2026)}}{57}{figure.caption.49}%

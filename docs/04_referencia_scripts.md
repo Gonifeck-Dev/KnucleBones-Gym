@@ -16,6 +16,7 @@ PASO 5 ─ Entrenar KMeans para perfilado      (train_kmeans.py)
 PASO 6 ─ Construir response tables           (build_response_table.py)
 PASO 7 ─ Evaluar cualquier matchup           (evaluate_any.py)
 PASO 8 ─ Generar gráficos y tablas           (analysis_toolkit.py)
+PASO 9 ─ Evaluación cruzada                  (cross_evaluate.py)
 ```
 
 ---
@@ -30,6 +31,7 @@ python -m gym.scripts.rl.train_sb3 `
   --algo PPO `
   --timesteps 400000 `
   --opponent heuristic:denial `
+  --n-envs 4 `
   --seed 123
 ```
 
@@ -41,6 +43,9 @@ python -m gym.scripts.rl.train_sb3 `
 - `--opponent` — Spec del oponente (default: `baseline:first`)
 - `--reward-mode` — Modo de recompensa: `diff_delta` o `outcome` (default: `diff_delta`)
 - `--out` — Nombre personalizado del modelo (default: generado automáticamente)
+- `--n-envs` — Environments paralelos (default: `1`, recomendado: `4`)
+
+> **Nota GPU/CPU**: PPO con MlpPolicy se ejecuta forzosamente en CPU. La GPU no aporta speedup con redes pequeñas (21→64→64→3) — el overhead de transferencia CPU↔GPU es mayor que el cálculo. El paralelismo se logra con `--n-envs` (SubprocVecEnv).
 
 **Archivos generados** (en `gym/data/models/rl/`):
 
@@ -82,7 +87,7 @@ python -m gym.scripts.rl.train_sb3 `
 
 ### 2.2 `train_neat.py` — Entrenar NEAT
 
-**Comando**:
+**Comando** (single-seed con rotación):
 ```powershell
 python -m gym.scripts.neat.train_neat `
   --opponent heuristic:denial `
@@ -91,15 +96,31 @@ python -m gym.scripts.neat.train_neat `
   --seed 123
 ```
 
+**Comando** (multi-semilla real — recomendado):
+```powershell
+python -m gym.scripts.neat.train_neat `
+  --opponent heuristic:denial `
+  --generations 300 `
+  --episodes-per-genome 34 `
+  --seeds "123,456,789"
+```
+
 **Parámetros**:
 
 - `--opponent` — Spec del oponente (default: `baseline:first`)
-- `--generations` — Generaciones evolutivas (default: `30`, recomendado: `100`)
-- `--episodes-per-genome` — Partidas para evaluar cada genoma (default: `20`, recomendado: `50`)
-- `--seed` — Semilla (default: `123`)
+- `--generations` — Generaciones evolutivas (default: `30`, recomendado: `100-300`)
+- `--episodes-per-genome` — Partidas por seed para evaluar cada genoma (default: `20`, recomendado: `34-50`)
+- `--seed` — Semilla única legacy (default: `123`)
+- `--seeds` — Semillas múltiples separadas por coma (ej. `"123,456,789"`). Activa multi-semilla real: cada genoma se evalúa contra todas las seeds simultáneamente, promediando fitness. Total episodios = episodes × num\_seeds.
 - `--config` — Archivo de configuración NEAT (default: `gym/config/neat/neat_config.ini`)
+- `--workers` — Workers paralelos (default: `0` = auto = cpu\_cores - 2, `1` = secuencial)
+- `--out` — Nombre personalizado del modelo de salida
 
-> **NOTA importante**: Con pocos episodios por genoma (ej. 20), la señal de fitness es ruidosa y NEAT puede seleccionar genomas que ganaron por suerte. Se recomienda mínimo 50 episodios para genomas robustos.
+> **Multi-semilla real**: Con `--seeds "123,456,789"` y `--episodes-per-genome 34`, cada genoma juega 34 × 3 = 102 episodios totales, evaluado contra 3 secuencias de dados distintas. Esto previene sobreajuste a una secuencia determinista particular.
+
+> **NOTA importante**: Con pocos episodios por genoma (ej. 20), la señal de fitness es ruidosa y NEAT puede seleccionar genomas que ganaron por suerte. Se recomienda mínimo 50 episodios totales para genomas robustos.
+
+> **Paralelismo**: Por defecto usa todos los cores menos 2 para evaluar genomas en paralelo con `multiprocessing.Pool`. Con 12 cores lógicos → 10 workers → speedup ~5-6x.
 
 **Archivos generados** (en `gym/data/models/neat/`):
 
@@ -378,6 +399,25 @@ python -m gym.scripts.utils.test_env_sanity
 python -m gym.scripts.utils.artifacts_doctor
 ```
 
+### 5.3 `cross_evaluate.py` — Evaluación cruzada (generalización vs overfitting)
+
+**Comando**:
+```powershell
+python -m gym.scripts.utils.cross_evaluate --games 2000 --seed 123
+```
+
+Evalúa cada especialista (NEAT/PPO/DT × 3 oponentes = 9 especialistas) contra **todos** los oponentes (3), generando una tabla 9×3 de winrates. Calcula el Δ (delta) entre rendimiento contra el oponente de entrenamiento vs oponentes no vistos para detectar overfitting.
+
+**Parámetros**:
+
+- `--games` — Partidas por matchup (default: `2000`)
+- `--seed` — Semilla (default: `123`)
+
+**Genera** (en `gym/data/results/reports/`):
+
+- `cross_evaluation.json` — Resultados completos en JSON
+- `cross_evaluation.md` — Tabla Markdown con análisis de generalización
+
 ---
 
 ## 6. Gramática de specs (policy_factory)
@@ -463,14 +503,14 @@ El KMeans detecta el estilo del oponente → consulta la response table → elig
 
 ```powershell
 # ═══ PASO 1: Entrenar PPO especialistas (×3) ═══
-python -m gym.scripts.rl.train_sb3 --algo PPO --timesteps 400000 --opponent heuristic:denial --seed 123
-python -m gym.scripts.rl.train_sb3 --algo PPO --timesteps 400000 --opponent heuristic:spread --seed 123
-python -m gym.scripts.rl.train_sb3 --algo PPO --timesteps 400000 --opponent heuristic:greedy --seed 123
+python -m gym.scripts.rl.train_sb3 --algo PPO --timesteps 400000 --opponent heuristic:denial --n-envs 4 --seed 123
+python -m gym.scripts.rl.train_sb3 --algo PPO --timesteps 400000 --opponent heuristic:spread --n-envs 4 --seed 123
+python -m gym.scripts.rl.train_sb3 --algo PPO --timesteps 400000 --opponent heuristic:greedy --n-envs 4 --seed 123
 
-# ═══ PASO 2: Entrenar NEAT especialistas (×3) ═══
-python -m gym.scripts.neat.train_neat --opponent heuristic:denial --generations 100 --episodes-per-genome 50 --seed 123
-python -m gym.scripts.neat.train_neat --opponent heuristic:spread --generations 100 --episodes-per-genome 50 --seed 123
-python -m gym.scripts.neat.train_neat --opponent heuristic:greedy --generations 100 --episodes-per-genome 50 --seed 123
+# ═══ PASO 2: Entrenar NEAT especialistas (×3, multi-semilla real) ═══
+python -m gym.scripts.neat.train_neat --opponent heuristic:denial --generations 300 --episodes-per-genome 34 --seeds "123,456,789"
+python -m gym.scripts.neat.train_neat --opponent heuristic:spread --generations 300 --episodes-per-genome 34 --seeds "123,456,789"
+python -m gym.scripts.neat.train_neat --opponent heuristic:greedy --generations 300 --episodes-per-genome 34 --seeds "123,456,789"
 
 # ═══ PASO 3: Generar datasets BC — PPO como teacher (×3) ═══
 python -m gym.scripts.decision_tree.generate_dataset_teacher --teacher "rl:PPO:gym/data/models/rl/PPO__vs_heuristic_denial.zip" --opponent heuristic:denial --episodes 50000
@@ -531,6 +571,9 @@ python -m gym.scripts.utils.evaluate_any --p0 "system:gym/config/systems/system_
 
 # ═══ PASO 8: Generar gráficos y tablas ═══
 python -m gym.scripts.utils.analysis_toolkit
+
+# ═══ PASO 9: Evaluación cruzada (generalización vs overfitting) ═══
+python -m gym.scripts.utils.cross_evaluate --games 2000 --seed 123
 ```
 
 ---

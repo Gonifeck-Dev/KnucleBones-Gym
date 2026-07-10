@@ -1,0 +1,101 @@
+{
+  "model_name": "sklearn_tree__vs_heuristic_greedy",
+  "created_utc": "20260305_062218",
+  "dataset_dir": "gym\\data\\datasets\\raw\\bc__teacher_rl_ppo_gym_data_models_rl_ppo_vs_heuristic_greedy.zip__vs_heuristic_greedy__eps50000__seed123",
+  "n_samples": 579063,
+  "n_features": 21,
+  "seed": 123,
+  "test_size": 0.2,
+  "hyperparams": {
+    "criterion": "gini",
+    "max_depth": 10,
+    "min_samples_leaf": 5
+  },
+  "metrics": {
+    "accuracy": 0.9441772512584943,
+    "confusion_matrix_labels": [
+      0,
+      1,
+      2
+    ],
+    "confusion_matrix": [
+      [
+        40644,
+        1275,
+        306
+      ],
+      [
+        1145,
+        42339,
+        1345
+      ],
+      [
+        361,
+        2033,
+        26365
+      ]
+    ],
+    "classification_report": {
+      "0": {
+        "precision": 0.964270462633452,
+        "recall": 0.9625577264653641,
+        "f1-score": 0.9634133333333333,
+        "support": 42225.0
+      },
+      "1": {
+        "precision": 0.9275308344469516,
+        "recall": 0.9444555979388343,
+        "f1-score": 0.9359167071930677,
+        "support": 44829.0
+      },
+      "2": {
+        "precision": 0.9410693889206168,
+        "recall": 0.9167564936193887,
+        "f1-score": 0.9287538529282254,
+        "support": 28759.0
+      },
+      "accuracy": 0.9441772512584943,
+      "macro avg": {
+        "precision": 0.9442902286670067,
+        "recall": 0.9412566060078623,
+        "f1-score": 0.9426946311515422,
+        "support": 115813.0
+      },
+      "weighted avg": {
+        "precision": 0.9442879004782531,
+        "recall": 0.9441772512584943,
+        "f1-score": 0.9441631779085324,
+        "support": 115813.0
+      }
+    }
+  },
+  "feature_extractor": "gym.policies.utils.features.extract_features",
+  "notes": "DecisionTreeClassifier trained via behavior cloning dataset.",
+  "wall_time_seconds": 2.049,
+  "model_size_bytes": 150625,
+  "tree_depth": 10,
+  "n_leaves": 849,
+  "feature_importances": [
+    0.28543142752422956,
+    0.038608721724056806,
+    0.02480725509341211,
+    0.22010332994909046,
+    0.025527208498457573,
+    0.05326997933001613,
+    0.2401999719815369,
+    0.002053002121198243,
+    0.0020676360399522293,
+    0.007738488291297939,
+    0.0036467861244460784,
+    0.0015142224709131977,
+    0.005603120251874332,
+    0.003248900139334955,
+    0.003361811414308687,
+    0.0003204491949472334,
+    0.011145206814807162,
+    0.0034059658593811777,
+    3.955291926792396e-06,
+    0.05862820379528861,
+    0.009314358089523885
+  ]
+}

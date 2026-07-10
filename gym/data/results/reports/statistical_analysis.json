@@ -1,0 +1,61 @@
+{
+  "analysis_type": "consolidated_statistical_analysis",
+  "ablation_study": {
+    "dt": {
+      "worst_generalist": {
+        "name": "dt_vs_spread",
+        "avg_wr": 0.5845333333333332
+      },
+      "best_generalist": {
+        "name": "dt_vs_greedy",
+        "avg_wr": 0.6176333333333334
+      },
+      "system_adaptive": {
+        "name": "system_dt",
+        "avg_wr": 0.6078893333333334
+      },
+      "oracle": {
+        "avg_wr": 0.6192
+      }
+    },
+    "ppo": {
+      "worst_generalist": {
+        "name": "ppo_vs_spread",
+        "avg_wr": 0.5719333333333333
+      },
+      "best_generalist": {
+        "name": "ppo_vs_greedy",
+        "avg_wr": 0.6095999999999999
+      },
+      "system_adaptive": {
+        "name": "system_ppo",
+        "avg_wr": 0.6043846666666667
+      },
+      "oracle": {
+        "avg_wr": 0.6174
+      }
+    },
+    "neat": {
+      "worst_generalist": {
+        "name": "neat_vs_spread",
+        "avg_wr": 0.5431333333333334
+      },
+      "best_generalist": {
+        "name": "neat_vs_denial",
+        "avg_wr": 0.6512
+      },
+      "system_adaptive": {
+        "name": "system_neat",
+        "avg_wr": 0.6526519999999999
+      },
+      "oracle": {
+        "avg_wr": 0.6512
+      }
+    }
+  },
+  "systems_compared": [
+    "system_dt",
+    "system_ppo",
+    "system_neat"
+  ]
+}

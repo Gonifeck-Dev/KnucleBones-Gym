@@ -1,0 +1,91 @@
+    \documentclass[final,letterpaper,oneside,numbers,11pt,singlespace,spanish]{ezthesis}
+\input{Macros.tex}
+\usepackage{graphicx} % Required for inserting images
+
+\newcommand{\qed}{\nobreak \ifvmode \relax \else
+      \ifdim\lastskip<1.5em \hskip-\lastskip
+      \hskip1.5em plus0em minus0.5em \fi \nobreak
+      \vrule height0.75em width0.5em depth0.25em\fi}
+
+\author{Gonzalo Ignacio Fernando Cerda López}
+\title{Rendimiento y desempeño del aprendizaje de distintas inteligencias artificiales en un entorno de videojuego offline\\}
+\degree{Ingeniería En Ejecución En Computación E Informática}
+\date{Marzo 2026}
+
+\supervisor{Luis Emilio Cabrera Crot}
+\institution{Universidad del Bío-Bío, Chile}
+\faculty{Facultad de Ciencias Empresariales}
+\department{Departamento de Sistemas de Información}
+
+
+\begin{document}
+\hyphenation{com-pu-ta-dor}
+\cleardoublepage
+\pagenumbering{roman}
+\setcounter{page}{1}
+%% En esta seccion se describe la estructura del documento de la tesis.
+%% Consulta los reglamentos de tu universidad para determinar el orden
+%% y la cantidad de secciones que debes de incluir
+
+%% # Portada de la tesis #
+%% Mirar el archivo "titlepage.tex" para los detalles.
+
+\include{titlepage}
+
+%% # Prefacios #
+%% Por cada prefacio (p.e. agradecimientos, resumen, etc.) crear
+%% un nuevo archivo e incluirlo aqu'i
+%% Para m'as detalles y un ejemplo mirar el archivo "gracias.tex".
+
+%\include{resumen}
+\input{capitulos/resumen}
+\input{capitulos/dedicatoria}
+\input{capitulos/acronimos}
+\input{capitulos/glosario}
+
+%\renewcommand{\tableofcontents}{Índice General}
+%\tableofcontents
+\renewcommand\contentsname{Índice General}
+\tableofcontents
+
+
+%\listoffigures
+\renewcommand{\listfigurename}{Índice de Figuras}
+\listoffigures
+
+
+\renewcommand{\listtablename}{Índice de Tablas}
+\listoftables
+
+\cleardoublepage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\chapter{Introducción}\label{cap:introduccion}
+\input{capitulos/1introduccion}
+
+\chapter{Bases Teóricas y Antecedentes}\label{cap:marco_teorico}
+\input{capitulos/2marco}
+
+\chapter{Estado del Arte}\label{cap:estado_del_arte}
+\input{capitulos/3estado}
+
+\chapter{Desarrollo del Trabajo} \label{cap:metodologia}
+\input{capitulos/4metodologia}
+
+\chapter{Resultados}  \label{cap:aplicacion}
+\input{capitulos/5resultados}
+
+\chapter{Conclusiones} \label{cap:conclusion}
+\input{capitulos/6conclusiones}
+
+\bibliography{bibliografia}
+
+
+\appendix
+
+\chapter{Plan de Trabajo y Carta Gantt}
+\label{anexo:Gantt}
+\input{anexos/gantt.tex}
+
+\end{document}

@@ -1,0 +1,91 @@
+El presente capítulo sintetiza los hallazgos principales del trabajo y responde a la pregunta central de la investigación: ¿es viable que una inteligencia artificial aprenda en tiempo real dentro de un videojuego ejecutado en hardware local? Se evalúa el cumplimiento de los objetivos planteados y se presentan las proyecciones de la investigación.
+
+\section{Conclusiones por Objetivo}
+
+\subsection{Medición del costo de aprendizaje}
+
+Se midió experimentalmente el costo de entrenamiento de tres paradigmas de inteligencia artificial: PPO requirió entre 390 y 1,369 segundos y 400,000 timesteps por especialista; NEAT requirió entre 1,818 y 1,995 segundos con poblaciones de 150 genomas durante 300 generaciones y evaluación multi-seed (102 episodios por genoma); DT destilado requirió menos de 3 segundos, pero depende de un teacher PPO previamente entrenado. El perfilador KMeans se entrenó en menos de 1 minuto. Todos los entrenamientos se ejecutaron exclusivamente en CPU, en hardware doméstico, sin requerir GPU.
+
+\subsection{Brecha entre entrenamiento offline y sesión real}
+
+Se cuantificó la brecha de datos entre los requerimientos de entrenamiento y la disponibilidad de muestras en una sesión contra un jugador humano. Los paradigmas evaluados requieren volúmenes de datos significativamente superiores a los disponibles en una sesión real:
+
+\begin{itemize}
+    \item \textbf{PPO}: $\sim$400,000 muestras (pares estado-acción).
+    \item \textbf{NEAT}: $\sim$4,590,000 episodios evaluados (300 generaciones $\times$ 150 genomas $\times$ 102 episodios).
+    \item \textbf{DT}: $\sim$500,000 muestras etiquetadas (generadas por un teacher PPO).
+\end{itemize}
+
+En contraste, una partida típica de Knucklebones produce aproximadamente 18 turnos. Un jugador humano razonablemente comprometido jugaría entre 10 y 100 partidas antes de perder interés, generando entre 180 y 1,800 muestras de decisión. Esta estimación constituye un supuesto operativo conservador; el análisis de sensibilidad presentado en el Capítulo~\ref{cap:aplicacion} demuestra que la conclusión no cambia dentro de rangos razonables (incluso con 100 partidas, la brecha es superior a 222$\times$ para PPO).
+
+La brecha resultante es de 2 a 4 órdenes de magnitud, lo cual impide que cualquiera de los tres paradigmas converja a una política funcional durante una sesión de juego real.
+
+\subsection{Adaptación por selección como alternativa}
+
+Se diseñó e implementó un mecanismo de adaptación por selección que combina perfilado no supervisado (KMeans con ventana temporal de 6 turnos), tablas de respuesta (response tables) y especialistas pre-entrenados. Este mecanismo opera sin reentrenamiento en tiempo de ejecución, con latencia de inferencia del agente inferior a 0.1 milisegundos por turno y latencia total del ciclo de decisión (incluyendo middleware HTTP) inferior a 10 milisegundos. El sistema adaptativo alcanzó rendimiento equivalente al mejor generalista fijo, validando la adaptación por selección como alternativa viable al entrenamiento online continuo.
+
+\subsection{Desempeño de los sistemas adaptativos}
+
+Los tres sistemas adaptativos alcanzaron winrates entre 0.604 y 0.653 contra oponentes heurísticos. El análisis estadístico (z-test con corrección de Bonferroni) reveló que:
+
+\begin{itemize}
+    \item \textbf{NEAT es significativamente superior}: con WR = 0.653 (IC 95\%: [0.645, 0.660]), supera a PPO (0.604) y DT (0.608) con $p < 0.003$ en 6 de 9 comparaciones. La técnica de entrenamiento multi-seed real fue determinante para la convergencia de NEAT.
+    \item PPO y DT destilado son estadísticamente equivalentes ($p > 0.5$), y el DT ofrece ventajas prácticas: inferencia rápida, interpretabilidad y entrenamiento instantáneo.
+    \item No se detectó sobreajuste en ninguna familia ($\Delta < 3\%$ en evaluación cruzada).
+\end{itemize}
+
+\subsection{Diseño de la plataforma experimental}
+
+Se logró diseñar e implementar una arquitectura modular tipo \textit{plug-and-play} que separa la lógica del videojuego de los agentes de IA. El entorno \texttt{KnucklebonesEnv} actúa como fuente única de verdad de reglas. La arquitectura permite intercambiar agentes sin modificar el motor, centralizar la extracción de características y estandarizar el registro de métricas. Se implementó un middleware HTTP/JSON que conecta los agentes Python con el videojuego Unity, verificando su funcionamiento con latencia total inferior a 10 milisegundos por turno.
+
+\section{Conclusión General}
+
+El objetivo central de esta investigación fue evaluar la viabilidad de entrenar inteligencias artificiales en tiempo real dentro de un entorno de ejecución completamente offline, es decir, sin depender de infraestructura en la nube ni de servidores externos. Los resultados demuestran que el entrenamiento online continuo durante la interacción con el usuario, en hardware local estándar, no es viable con los paradigmas de aprendizaje evaluados (PPO, NEAT, DT). La limitación principal no es la capacidad de cómputo, sino la escasez fundamental de datos: un usuario genera entre 2 y 4 órdenes de magnitud menos muestras de las necesarias para que cualquiera de estos enfoques converja a una política funcional.
+
+Este hallazgo tiene implicaciones que trascienden el dominio de los videojuegos. Cualquier sistema informático que requiera adaptación en tiempo real con recursos locales ---sistemas de recomendación embebidos, asistentes interactivos, interfaces adaptativas, dispositivos IoT con capacidad de aprendizaje--- enfrenta la misma restricción fundamental: el volumen de interacciones que un usuario genera en una sesión típica es insuficiente para entrenar modelos de aprendizaje automático convencionales.
+
+No obstante, los resultados demuestran que existen alternativas prácticas que sí resultan viables bajo restricciones de ejecución offline:
+
+\begin{enumerate}
+    \item \textbf{Entrenamiento offline previo al despliegue}: los agentes alcanzan rendimiento competitivo (WR 60--65\%) entrenando fuera de la interacción con el usuario, sin GPU, en menos de 33 minutos por modelo. Esta estrategia es aplicable a cualquier dominio donde se disponga de un simulador o de datos históricos.
+
+    \item \textbf{Adaptación por selección en tiempo de ejecución}: mediante clasificación del usuario (perfilado con KMeans), tablas de respuesta y especialistas pre-entrenados, el sistema se adapta sin reentrenar, con latencia de inferencia inferior a 0.1 ms. Este enfoque permite personalización en tiempo real sin el costo del entrenamiento continuo.
+
+    \item \textbf{Recolección de datos en tiempo real para reentrenamiento posterior}: una alternativa intermedia consiste en registrar las interacciones durante las sesiones reales y utilizarlas para actualizar los modelos de forma periódica, fuera de línea. Esta estrategia aprovecha datos reales sin imponer el costo del entrenamiento durante la interacción, y es aplicable a sistemas que requieran mejora continua basada en el comportamiento observado de usuarios reales.
+
+    \item \textbf{Compresión de modelos mediante destilación}: modelos complejos (PPO) se transforman en modelos livianos e interpretables (DT) mediante \textit{Behavior Cloning}, preservando $>$93\% de fidelidad con entrenamiento instantáneo. Esto facilita el despliegue en dispositivos con recursos limitados.
+\end{enumerate}
+
+La neuroevolución (NEAT) con entrenamiento multi-seed real alcanzó el mejor rendimiento competitivo (WR = 0.653), demostrando que la técnica de entrenamiento tiene un impacto mayor que la complejidad del algoritmo. Este hallazgo refuerza la importancia de la metodología experimental rigurosa y la iteración sobre el protocolo de entrenamiento.
+
+La arquitectura modular diseñada ---con separación estricta entre la lógica del sistema y los agentes de IA--- no solo facilita la evaluación reproducible, sino que constituye un patrón de diseño transferible a otros dominios. La integración mediante middleware HTTP/JSON demuestra que es posible desacoplar completamente el sistema principal de los módulos de inteligencia artificial, habilitando actualizaciones independientes y experimentación controlada.
+
+En síntesis, la respuesta a la pregunta central de esta investigación no es binaria. El aprendizaje online continuo no es viable con los paradigmas convencionales debido a la brecha de datos, pero la adaptación parcial mediante selección de especialistas pre-entrenados, combinada con recolección de datos para reentrenamiento periódico, constituye una alternativa práctica demostrada que puede aplicarse tanto a videojuegos como a cualquier sistema informático que requiera adaptación en tiempo real con recursos de cómputo locales.
+
+\section{Trabajo Futuro}
+
+Dentro de las principales líneas de trabajo futuro se encuentran:
+
+\begin{itemize}
+    \item \textbf{Exploración de técnicas de bajo costo de datos}: investigar enfoques de \textit{meta-learning}, \textit{few-shot learning} o aprendizaje incremental que podrían reducir la brecha de datos necesarios, acercando la viabilidad del entrenamiento online en sesiones reales.
+    \item \textbf{Reentrenamiento offline con datos de sesión}: una alternativa intermedia consiste en recolectar datos de las partidas contra jugadores humanos y utilizarlos para reentrenar los modelos fuera de línea, actualizando los especialistas periódicamente. Esta aproximación mantiene la viabilidad demostrada del entrenamiento offline y aprovecha datos reales.
+    \item \textbf{Modificación de NEAT para adaptación incremental}: explorar la posibilidad de ajustar genomas NEAT existentes con pocas evaluaciones adicionales, partiendo de un modelo pre-entrenado en lugar de entrenar desde cero.
+    \item \textbf{Evaluación con jugadores humanos}: ejecutar partidas con personas reales para validar la transferencia de las políticas aprendidas, medir la experiencia subjetiva de juego y confirmar la estimación de datos disponibles por sesión.
+    \item \textbf{Dominios con mayor diversidad estratégica}: aplicar el marco experimental a juegos con mayor variedad de estilos de juego (RTS, juegos por turnos con más acciones), donde la adaptación por selección podría aportar mayor beneficio.
+    \item \textbf{Optimización del perfilador}: investigar clustering adaptativo, variación del número de clusters y features de perfilado más discriminantes.
+\end{itemize}
+
+\section{Reflexiones}
+
+El desarrollo de este proyecto permitió adquirir y consolidar competencias relevantes en múltiples áreas:
+
+\begin{itemize}
+    \item \textbf{Machine Learning aplicado}: diseño, entrenamiento y evaluación de modelos de RL, neuroevolución y aprendizaje supervisado.
+    \item \textbf{Diseño experimental}: control de variables, reproducibilidad, tests estadísticos y análisis de significancia.
+    \item \textbf{Ingeniería de software}: arquitectura modular, patrones de diseño, separación de responsabilidades y automatización de pipelines.
+    \item \textbf{Análisis de datos}: métricas, visualización, intervalos de confianza y correcciones para comparaciones múltiples.
+\end{itemize}
+
+Un aprendizaje significativo fue que la pregunta original ---si una IA puede aprender en tiempo real dentro de un entorno ejecutado localmente--- no tiene una respuesta binaria. El entrenamiento online continuo no es viable con los paradigmas convencionales evaluados debido a la brecha de datos, pero la adaptación parcial mediante selección de especialistas pre-entrenados, perfilado del usuario y recolección de datos para reentrenamiento posterior sí lo es, y produce resultados competitivos.
+
+Esta distinción entre ``aprendizaje online pleno'' y ``adaptación online por selección'' resultó ser el hallazgo más relevante de la investigación. Si bien este trabajo se centró en el dominio de videojuegos, el patrón identificado podría ser relevante para otros sistemas que enfrenten restricciones similares de recursos locales y volumen de datos por sesión.

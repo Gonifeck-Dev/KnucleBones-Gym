@@ -1,0 +1,25 @@
+{
+  "games": 5000,
+  "wins_p0": 2879,
+  "wins_p1": 2024,
+  "ties": 97,
+  "winrate_p0": 0.5758,
+  "winrate_p1": 0.4048,
+  "winrate_p0_decided": 0.587192,
+  "winrate_p0_decided_se": 0.007031,
+  "avg_turns": 22.74,
+  "avg_score_diff_p0_minus_p1": 4.6362,
+  "std_score_diff": 20.4066,
+  "score_diff_percentiles": {
+    "p5": -28.0,
+    "p25": -9.0,
+    "p50": 4.0,
+    "p75": 17.0,
+    "p95": 39.0
+  },
+  "run_dir": "gym\\data\\results\\runs\\20260304_031546__evaluate_any__system_dt_vs_heuristic_denial__games5000__seed123",
+  "p0_spec": "system:gym/config/systems/system_dt.json",
+  "p1_spec": "heuristic:denial",
+  "wall_time_seconds": 26.112,
+  "avg_wall_time_per_game": 0.005222
+}

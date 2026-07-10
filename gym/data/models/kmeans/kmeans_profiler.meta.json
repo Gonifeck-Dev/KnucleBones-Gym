@@ -1,0 +1,70 @@
+{
+  "created_utc": "20260305_062502",
+  "profile_version": 2,
+  "k": 4,
+  "window": 6,
+  "profile_dim": 10,
+  "seed": 123,
+  "style_specs": [
+    "heuristic:denial",
+    "heuristic:greedy",
+    "heuristic:spread",
+    "heuristic:random"
+  ],
+  "style_names": [
+    "heuristic_denial",
+    "heuristic_greedy",
+    "heuristic_spread",
+    "heuristic_random"
+  ],
+  "n_samples": 48413,
+  "cluster_to_style": {
+    "0": "heuristic_spread",
+    "1": "heuristic_greedy",
+    "2": "heuristic_denial",
+    "3": "heuristic_spread"
+  },
+  "cluster_purity": {
+    "0": {
+      "counts_per_style": [
+        874,
+        771,
+        3889,
+        3692
+      ],
+      "total": 9226
+    },
+    "1": {
+      "counts_per_style": [
+        4567,
+        4679,
+        458,
+        1189
+      ],
+      "total": 10893
+    },
+    "2": {
+      "counts_per_style": [
+        4923,
+        4699,
+        505,
+        1699
+      ],
+      "total": 11826
+    },
+    "3": {
+      "counts_per_style": [
+        2218,
+        1750,
+        7952,
+        4548
+      ],
+      "total": 16468
+    }
+  },
+  "artifact_path": "gym\\data\\models\\kmeans\\kmeans_profiler",
+  "wall_time_seconds": 19.851,
+  "inertia": 268089.0,
+  "silhouette_score": 0.205428,
+  "artifact_size_bytes": 195628
+}

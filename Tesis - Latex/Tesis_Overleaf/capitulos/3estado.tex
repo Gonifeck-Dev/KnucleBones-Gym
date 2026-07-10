@@ -1,0 +1,117 @@
+El presente capítulo revisa los enfoques actuales utilizados para implementar inteligencia artificial en videojuegos, tanto en contextos académicos como industriales. Se analizan técnicas deterministas, enfoques basados en aprendizaje automático y mecanismos de adaptación al jugador, con especial atención a la viabilidad del aprendizaje en tiempo real y a las alternativas implementadas en la práctica bajo restricciones de hardware local.
+
+\section{IA clásica en videojuegos comerciales}
+
+La mayoría de los videojuegos comerciales continúan utilizando modelos deterministas como máquinas de estados finitos (FSM), árboles de comportamiento y sistemas basados en reglas \cite{yannakakis2018ai}. Estos enfoques permiten un control preciso del comportamiento, bajo consumo computacional y alta estabilidad en tiempo real.
+
+Ejemplos representativos incluyen la saga \textit{Halo} (Bungie/343 Industries), donde los enemigos utilizan árboles de comportamiento para coordinar tácticas de grupo; \textit{F.E.A.R.} (Monolith, 2005), reconocido por su sistema de planificación GOAP (\textit{Goal-Oriented Action Planning}); y \textit{The Last of Us} (Naughty Dog, 2013), donde la IA de los compañeros emplea FSM con ajustes contextuales. En todos estos casos, la IA prioriza coherencia narrativa, controlabilidad y estabilidad sobre el aprendizaje autónomo. Su bajo costo computacional y facilidad de depuración los mantienen vigentes en producción comercial.
+
+\section{Adaptación sin aprendizaje online pleno}
+
+En varios títulos comerciales se implementan mecanismos de adaptación al jugador que, a pesar de generar la percepción de aprendizaje, no actualizan pesos de modelos durante la ejecución. A continuación se presentan tres casos representativos.
+
+\subsection{Caso Alien: Isolation (Creative Assembly, 2014)}
+
+El Xenomorfo de Alien: Isolation no entrena un modelo de aprendizaje automático. En su lugar, detecta patrones del jugador y desbloquea contramedidas predefinidas. Si el jugador se esconde frecuentemente debajo de mesas, el Alien incrementa la probabilidad de buscar en esas ubicaciones. Este mecanismo constituye adaptación por reglas condicionales, no por aprendizaje.
+
+\subsection{Caso Metal Gear Solid V (Konami, 2015)}
+
+En MGSV, los soldados enemigos reaccionan a tendencias del jugador: muchos disparos a la cabeza provocan que los soldados usen cascos; jugar frecuentemente de noche resulta en que los enemigos adquieran visores nocturnos. Este sistema representa un enfoque adaptativo basado en contadores y umbrales, sin componentes de aprendizaje automático.
+
+\subsection{Síntesis: adaptación por diseño, no por entrenamiento}
+
+Estos casos evidencian que la adaptación al jugador en videojuegos comerciales se implementa predominantemente mediante reglas condicionales, contadores y respuestas predefinidas por los diseñadores. No se actualizan pesos ni se ejecutan algoritmos de optimización en runtime. La adaptación se logra por diseño, no por aprendizaje.
+
+\section{Machine Learning en desarrollo y despliegue offline}
+
+\subsection{Caso ARC Raiders (Embark Studios)}
+
+ARC Raiders, desarrollado por Embark Studios \cite{arcraiders2025site}, fue analizado como caso industrial contemporáneo asociado discursivamente a inteligencia artificial ``emergente''. La evidencia pública revisada sugiere que ARC Raiders emplea \textit{Machine Learning} en subsistemas específicos, particularmente locomoción o animación de ciertos enemigos, mediante entrenamiento realizado durante el desarrollo \cite{arcraiders2025interview}. Sin embargo, no se encontraron fuentes técnicas públicas que demuestren aprendizaje \textit{online} pleno o actualización de pesos durante la ejecución de las partidas. En consecuencia, el caso resulta más consistente con un esquema de entrenamiento \textit{offline} y despliegue en inferencia que con aprendizaje en tiempo real dentro del juego final \cite{arcraiders2025steam}.
+
+Este caso ilustra una práctica frecuente en la industria: el uso de ML como herramienta de desarrollo, no como mecanismo de adaptación en tiempo de ejecución. La percepción pública de ``IA que aprende'' no corresponde necesariamente con la implementación técnica real del producto.
+
+\subsection{Uso industrial de ML en videojuegos}
+
+En la práctica industrial, el ML suele utilizarse para tareas específicas como análisis de comportamiento del jugador, generación procedural o balance dinámico, pero rara vez como entrenamiento autónomo en tiempo real dentro del juego final. Frameworks como Unity ML-Agents \cite{juliani2018mlagents} permiten entrenar agentes mediante interacción simulada, pero el entrenamiento se realiza en fase de desarrollo y los modelos resultantes se despliegan como políticas fijas.
+
+\subsection{Síntesis de casos industriales}
+
+En los casos industriales revisados en este trabajo no se observa actualización de pesos de modelos en tiempo de ejecución. La literatura académica coincide en que la IA en videojuegos comerciales privilegia el control de diseño y la estabilidad sobre el aprendizaje autónomo \cite{yannakakis2018ai}. La adaptación al jugador se resuelve, en los casos observados, mediante reglas predefinidas, contadores o políticas pre-entrenadas, no mediante entrenamiento continuo en runtime.
+
+La Tabla~\ref{tab:estado_arte_casos} resume los enfoques de adaptación identificados en los casos analizados.
+
+\begin{table}[H]
+\centering
+\caption{Resumen de enfoques de adaptación en casos industriales y académicos}
+\begin{tabular}{llcc}
+\hline
+\textbf{Caso} & \textbf{Mecanismo} & \textbf{Aprendizaje online} & \textbf{Hardware} \\
+\hline
+Alien: Isolation & Reglas condicionales & No & Local \\
+Metal Gear Solid V & Contadores y umbrales & No & Local \\
+ARC Raiders & ML offline + inferencia & No & Local \\
+AlphaGo / AlphaStar & RL masivo offline & No & TPUs/GPUs \\
+\hline
+\end{tabular}
+\label{tab:estado_arte_casos}
+\end{table}
+
+Este patrón refuerza la pregunta central de esta investigación: ¿el aprendizaje en tiempo real no se implementa porque no es necesario, o porque no es viable? El presente trabajo aborda esta pregunta con evidencia experimental cuantitativa.
+
+\section{Brecha entre logros académicos y despliegue real}
+
+En entornos académicos, proyectos como AlphaGo \cite{silver2016mastering}, OpenAI Five y AlphaStar \cite{vinyals2019grandmaster} han demostrado la capacidad de agentes entrenados mediante RL para superar a expertos humanos en juegos complejos. No obstante, estos sistemas requieren infraestructura de cómputo masivo: AlphaStar utilizó 16 TPUs durante 44 días, y OpenAI Five requirió miles de GPUs durante meses. Estos volúmenes de cómputo son inalcanzables en hardware local convencional.
+
+Un aspecto poco discutido en la literatura es que estos logros fueron alcanzados con entrenamiento offline masivo, no con aprendizaje durante la partida contra humanos. Los agentes resultantes son políticas fijas desplegadas para evaluación. Esto demuestra que incluso con recursos computacionales prácticamente ilimitados, el entrenamiento se realiza offline y se despliega como inferencia.
+
+El aprendizaje por refuerzo (RL) ha mostrado resultados sobresalientes en entornos con reglas bien definidas. Algoritmos como Q-Learning, DQN \cite{mnih2015dqn} y PPO \cite{schulman2017ppo} han sido ampliamente utilizados en juegos discretos y simulaciones. Sin embargo, el entrenamiento requiere gran cantidad de episodios, lo que introduce una separación entre entrenamiento y despliegue.
+
+\section{Adaptación basada en perfilado de jugador}
+
+Otra línea relevante en el estado del arte es la adaptación basada en análisis del comportamiento del jugador \cite{yannakakis2013player}. Técnicas de clustering y clasificación se utilizan para detectar perfiles (por ejemplo, agresivo, defensivo, explorador), ajustando parámetros o seleccionando estrategias predefinidas.
+
+Este enfoque presenta ventajas importantes:
+\begin{itemize}
+    \item Bajo costo computacional en runtime.
+    \item Fácil integración con sistemas existentes.
+    \item Control de diseño sobre las respuestas del sistema.
+\end{itemize}
+
+A diferencia del RL profundo, estos mecanismos permiten adaptación sin necesidad de entrenamiento masivo continuo, lo que los hace particularmente relevantes para ejecución local.
+
+\section{Ejecución local versus infraestructura en nube}
+
+La mayoría de los desarrollos avanzados en ML para videojuegos dependen de entrenamiento en la nube o en entornos de cómputo de alto rendimiento. Si bien esto permite modelos complejos, introduce dependencia de infraestructura externa y eleva los costos.
+
+En contraste, la ejecución local impone restricciones que afectan directamente la viabilidad del aprendizaje:
+
+\begin{itemize}
+    \item Capacidad limitada de cómputo (CPU doméstico, GPU de gama media).
+    \item Volumen de datos limitado a las interacciones con el usuario local.
+    \item Necesidad de latencia baja para mantener la experiencia de juego.
+    \item Ausencia de simuladores acelerados durante la partida real.
+\end{itemize}
+
+La literatura existente asume implícitamente que el entrenamiento en tiempo real en hardware local no es viable, pero esta suposición no ha sido cuantificada de forma experimental con paradigmas representativos. Este trabajo aborda esa carencia.
+
+\section{Limitaciones identificadas en el estado del arte}
+
+Del análisis realizado se desprenden las siguientes limitaciones:
+
+\begin{itemize}
+    \item Ausencia de cuantificación experimental de la brecha de datos entre entrenamiento offline y sesión real.
+    \item Alta dependencia de infraestructura externa para entrenamiento en la mayoría de los trabajos académicos.
+    \item Escasa distinción formal entre aprendizaje online pleno y adaptación por selección en la literatura de IA para videojuegos.
+    \item Falta de evidencia empírica sobre qué ocurre cuando se intenta entrenar con el volumen de datos disponible en una sesión humana real.
+\end{itemize}
+
+\section{Posicionamiento del presente trabajo}
+
+El presente proyecto se posiciona como una investigación experimental que busca:
+
+\begin{itemize}
+    \item Cuantificar el costo real del aprendizaje de tres paradigmas representativos (RL, neuroevolución, aprendizaje supervisado) en hardware local.
+    \item Medir la brecha entre los datos requeridos por cada paradigma y los disponibles en una sesión contra un jugador humano.
+    \item Evaluar la adaptación por selección de especialistas pre-entrenados como alternativa demostrable al entrenamiento online continuo.
+    \item Contribuir con evidencia experimental sobre una pregunta relevante para la industria: ¿es viable que una IA aprenda en tiempo real dentro de un videojuego en hardware local?
+\end{itemize}

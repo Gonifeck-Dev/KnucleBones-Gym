@@ -1,0 +1,18 @@
+\chapter*{Resumen\markboth{Resumen}{Resumen}}
+
+\renewcommand{\keywords}{\textbf{\emph{Palabras Clave ---~}}}
+
+Este trabajo investiga el rendimiento y desempeño del aprendizaje de distintas inteligencias artificiales en un entorno de videojuego ejecutado completamente offline, sin depender de infraestructura en la nube. El problema central abordado es la ausencia de evidencia experimental que cuantifique la viabilidad del aprendizaje de IA en tiempo real bajo restricciones de hardware local, y la necesidad de explorar alternativas que ofrezcan adaptabilidad sin depender de entrenamiento online continuo.
+
+Se desarrolló una plataforma experimental modular basada en el videojuego de turnos Knucklebones, sobre la cual se entrenaron y evaluaron tres paradigmas de aprendizaje: aprendizaje por refuerzo (PPO), neuroevolución (NEAT) y árboles de decisión destilados por \emph{Behavior Cloning}. Para cada paradigma se midieron rigurosamente los datos requeridos, el tiempo de entrenamiento, los recursos computacionales y el desempeño del agente resultante.
+
+El Capítulo 1 presenta la problemática y los objetivos centrados en evaluar la viabilidad del aprendizaje. El Capítulo 2 describe los fundamentos teóricos, incluyendo la distinción entre aprendizaje online pleno y adaptación por selección. El Capítulo 3 revisa el estado del arte con énfasis en casos industriales que evidencian la ausencia de aprendizaje en tiempo real. El Capítulo 4 detalla la arquitectura, el protocolo experimental y los criterios de viabilidad. El Capítulo 5 presenta los resultados: costos de entrenamiento, análisis de brecha de datos, evaluación de sistemas adaptativos y discusión. El Capítulo 6 sintetiza conclusiones y trabajo futuro.
+
+Los resultados demuestran que los tres paradigmas requieren entre 2 y 4 órdenes de magnitud más datos de los que un usuario genera en una sesión real (180--1,800 muestras vs. 400,000--4,590,000 requeridas), lo cual impide el entrenamiento online continuo durante la interacción. Este patrón podría extenderse a otros sistemas con restricciones similares de recursos locales y volumen de interacciones por sesión.
+
+Sin embargo, el entrenamiento offline en hardware doméstico es viable: todos los modelos se entrenaron en menos de 33 minutos por especialista, sin GPU. El sistema NEAT alcanzó un winrate de 0.653 (IC 95\%: [0.645, 0.660]), significativamente superior a DT (0.608) y PPO (0.604). Como alternativas al aprendizaje en tiempo real, se implementaron: (1) un mecanismo de adaptación por selección (KMeans + especialistas pre-entrenados) que opera con latencia de inferencia inferior a 0.1 ms y alcanza rendimiento equivalente al mejor generalista fijo; y (2) la posibilidad de recolectar datos durante las sesiones reales para reentrenamiento posterior, aprovechando datos reales sin el costo del entrenamiento durante la interacción.
+
+Se concluye que la adaptación parcial ---mediante perfilado del usuario, selección de políticas pre-entrenadas y recolección de datos para reentrenamiento periódico--- constituye la alternativa práctica demostrada frente al entrenamiento online continuo en hardware local, con potencial aplicabilidad a otros dominios que enfrenten restricciones similares.
+
+\keywords{videojuegos, inteligencia artificial, aprendizaje offline, viabilidad del aprendizaje, adaptación por selección, aprendizaje por refuerzo, neuroevolución, árboles de decisión, hardware local}
+\vfill

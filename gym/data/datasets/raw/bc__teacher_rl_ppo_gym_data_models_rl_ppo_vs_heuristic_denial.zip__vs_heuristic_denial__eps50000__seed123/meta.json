@@ -1,23 +1,23 @@
 {
   "dataset_name": "bc__teacher_rl_ppo_gym_data_models_rl_ppo_vs_heuristic_denial.zip__vs_heuristic_denial__eps50000__seed123",
-  "created_utc": "20260304_021957",
+  "created_utc": "20260305_055247",
   "episodes": 50000,
   "seed": 123,
   "teacher": "rl:PPO:gym/data/models/rl/PPO__vs_heuristic_denial.zip",
   "opponent": "heuristic:denial",
-  "n_samples": 584027,
+  "n_samples": 586662,
   "n_features": 21,
   "format": "npz (X,y)",
   "feature_extractor": "gym.policies.utils.features.extract_features",
   "turn_protocol": "die=env.roll_die(); obs=env._get_obs(die); step(action, dice_value=die)",
   "notes": "Behavior cloning dataset.",
-  "wall_time_seconds": 271.863,
-  "episodes_per_second": 183.92,
-  "dataset_size_bytes": 5881131,
+  "wall_time_seconds": 317.121,
+  "episodes_per_second": 157.67,
+  "dataset_size_bytes": 5937026,
   "action_distribution": {
-    "0": 220078,
-    "1": 223808,
-    "2": 140141
+    "0": 217840,
+    "1": 218428,
+    "2": 150394
   },
-  "action_balance_ratio": 0.6262
+  "action_balance_ratio": 0.6885
 }

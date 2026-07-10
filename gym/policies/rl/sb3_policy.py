@@ -1,9 +1,7 @@
 # gym/policies/rl/sb3_policy.py
 from __future__ import annotations
 
-import json
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional
 
 from gym.policies.utils.base_policy import BasePolicy, PolicyStep
 from gym.policies.utils.features import extract_features
@@ -22,13 +20,15 @@ class SB3Policy(BasePolicy):
         self.model = self._load()
 
     def _load(self):
+        # Forzar CPU para inferencia: la red MLP es tan pequeña (21→64→64→3)
+        # que el overhead de transferencia CPU↔GPU es mayor que el cálculo.
         try:
             if self.algo == "PPO":
                 from stable_baselines3 import PPO
-                return PPO.load(self.model_path)
+                return PPO.load(self.model_path, device="cpu")
             if self.algo == "DQN":
                 from stable_baselines3 import DQN
-                return DQN.load(self.model_path)
+                return DQN.load(self.model_path, device="cpu")
         except Exception as e:
             raise RuntimeError(f"Failed to load SB3 model ({self.algo}) from {self.model_path}: {e}") from e
 

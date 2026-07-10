@@ -1,0 +1,44 @@
+{
+  "created_utc": "20260304_210909",
+  "generations": 300,
+  "episodes_per_genome": 100,
+  "seed": 123,
+  "seed_rotation": true,
+  "seed_rotation_prime": 10007,
+  "opponent": "heuristic:greedy",
+  "config_path": "gym/config/neat/neat_config.ini",
+  "genome_path": "gym\\data\\models\\neat\\neat__vs_heuristic_greedy__seed123.pkl",
+  "fitness": 0.8753200000000001,
+  "obs_features": 21,
+  "feature_extractor": "gym.policies.utils.features.extract_features",
+  "wall_time_seconds": 1671.798,
+  "genome_size_bytes": 6358,
+  "peak_memory_mb": null,
+  "generation_log": "gym\\data\\models\\neat\\neat__vs_heuristic_greedy__seed123.generation_log.jsonl",
+  "num_workers": 10,
+  "selected_from_seeds": [
+    123,
+    456,
+    789
+  ],
+  "selection_method": "best_eval_winrate",
+  "eval_winrate": 0.6243602865916069,
+  "eval_games": 1000,
+  "all_candidates": [
+    {
+      "seed": 123,
+      "fitness": 0.8753200000000001,
+      "eval_winrate": 0.6243602865916069
+    },
+    {
+      "seed": 456,
+      "fitness": 0.8407000000000001,
+      "eval_winrate": 0.6243602865916069
+    },
+    {
+      "seed": 789,
+      "fitness": 0.8687600000000002,
+      "eval_winrate": 0.6243602865916069
+    }
+  ]
+}

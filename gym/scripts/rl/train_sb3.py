@@ -78,29 +78,45 @@ def main() -> None:
     ap.add_argument("--opponent", type=str, default="baseline:first")
     ap.add_argument("--reward-mode", type=str, default="diff_delta", choices=["diff_delta", "outcome"])
     ap.add_argument("--out", type=str, default="", help="Optional output model name (without extension)")
+    ap.add_argument("--n-envs", type=int, default=1,
+                    help="Parallel environments (SubprocVecEnv). 1=sequential, >1=parallel.")
     args = ap.parse_args()
 
     try:
-        from stable_baselines3.common.vec_env import DummyVecEnv
+        from stable_baselines3.common.vec_env import DummyVecEnv, SubprocVecEnv
     except Exception as e:
         raise RuntimeError("Missing stable-baselines3. Install: pip install stable-baselines3 gymnasium") from e
 
-    def make_env():
-        return KnucklebonesSB3Env(
-            opponent_spec=args.opponent,
-            seed=args.seed,
-            reward_mode=args.reward_mode,
-        )
+    n_envs = max(1, args.n_envs)
 
-    vec_env = DummyVecEnv([make_env])
+    def make_env_fn(env_seed):
+        """Factory que devuelve una función sin args (requerido por SubprocVecEnv)."""
+        def _init():
+            return KnucklebonesSB3Env(
+                opponent_spec=args.opponent,
+                seed=env_seed,
+                reward_mode=args.reward_mode,
+            )
+        return _init
+
+    if n_envs > 1:
+        env_fns = [make_env_fn(args.seed + i * 10000) for i in range(n_envs)]
+        vec_env = SubprocVecEnv(env_fns)
+        print(f"[INFO] Parallel envs: {n_envs} (SubprocVecEnv)")
+    else:
+        vec_env = DummyVecEnv([make_env_fn(args.seed)])
+        print("[INFO] Sequential env: 1 (DummyVecEnv)")
+
+    # Forzar CPU: MlpPolicy no se beneficia de GPU (warning oficial de SB3)
+    device = "cpu"
 
     algo = args.algo.upper()
     if algo == "PPO":
         from stable_baselines3 import PPO
-        model = PPO("MlpPolicy", vec_env, verbose=1, seed=args.seed)
+        model = PPO("MlpPolicy", vec_env, verbose=1, seed=args.seed, device=device)
     else:
         from stable_baselines3 import DQN
-        model = DQN("MlpPolicy", vec_env, verbose=1, seed=args.seed)
+        model = DQN("MlpPolicy", vec_env, verbose=1, seed=args.seed, device=device)
 
     # --- Preparar logging ---
     out_dir = Path("gym/data/models/rl")
@@ -154,11 +170,13 @@ def main() -> None:
         "model_path": str(model_path),
         "obs_features": 21,
         "feature_extractor": "gym.policies.utils.features.extract_features",
-        # --- Métricas nuevas ---
+        # --- Métricas ---
         "wall_time_seconds": round(wall_time, 3),
         "model_size_bytes": model_size,
         "peak_memory_mb": peak_memory_mb,
         "training_log": str(log_path),
+        "n_envs": n_envs,
+        "device": device,
     }
     meta_path.write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
 

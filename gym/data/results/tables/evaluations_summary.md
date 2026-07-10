@@ -1,0 +1,34 @@
+| p0                                                                                                      | p1               |   Games |   Winrate |   +/- SE |   Avg Diff |   Std Diff |   Wall (s) |
+|:--------------------------------------------------------------------------------------------------------|:-----------------|--------:|----------:|---------:|-----------:|-----------:|-----------:|
+| system:gym/config/systems/system_dt.json                                                                | heuristic:greedy |    5000 |    0.5825 |   0.007  |       4.53 |      20.48 |       25.4 |
+| system:gym/config/systems/system_dt.json                                                                | heuristic:denial |    5000 |    0.5872 |   0.007  |       4.64 |      20.41 |       26.1 |
+| system:gym/config/systems/system_dt.json                                                                | heuristic:spread |    5000 |    0.6581 |   0.0068 |       8.77 |      20.35 |       27.4 |
+| system:gym/config/systems/system_ppo.json                                                               | heuristic:denial |    5000 |    0.5839 |   0.007  |       4.54 |      20.6  |       43.2 |
+| system:gym/config/systems/system_ppo.json                                                               | heuristic:spread |    5000 |    0.6521 |   0.0068 |       8.54 |      20.44 |       40.3 |
+| system:gym/config/systems/system_ppo.json                                                               | heuristic:greedy |    5000 |    0.5809 |   0.007  |       4.35 |      20.69 |       40.1 |
+| system:gym/config/systems/system_neat.json                                                              | heuristic:denial |    5000 |    0.5759 |   0.0071 |       3.57 |      20.33 |       30.7 |
+| system:gym/config/systems/system_neat.json                                                              | heuristic:spread |    5000 |    0.6673 |   0.0067 |       9.18 |      20.2  |       29.7 |
+| system:gym/config/systems/system_neat.json                                                              | heuristic:greedy |    5000 |    0.5782 |   0.0071 |       3.55 |      20.51 |       34.2 |
+| neat:gym/data/models/neat/neat__vs__heuristic_greedy__extended.pkl:gym/config/neat/neat_config.ini      | heuristic:greedy |    5000 |    0.5817 |   0.007  |       4.04 |      21.47 |       13.4 |
+| neat:gym/data/models/neat/neat__vs_heuristic_greedy.pkl:gym/config/neat/neat_config.ini                 | heuristic:greedy |    2000 |    0.6274 |   0.0109 |       5.86 |      20.76 |        5.1 |
+| neat:gym/data/models/neat/neat__vs__heuristic_greedy__extended.pkl:gym/config/neat/neat_config.ini      | heuristic:greedy |    2000 |    0.5777 |   0.0111 |       3.77 |      21.25 |        5.2 |
+| neat:gym/data/models/neat/neat__vs_heuristic_greedy__multiseed_real.pkl:gym/config/neat/neat_config.ini | heuristic:greedy |    5000 |    0.6262 |   0.0069 |       6.01 |      20.77 |       13.3 |
+| neat:gym/data/models/neat/neat__vs_heuristic_denial__multiseed_real.pkl:gym/config/neat/neat_config.ini | heuristic:denial |    5000 |    0.6347 |   0.0069 |       6.37 |      20.74 |       21.8 |
+| neat:gym/data/models/neat/neat__vs_heuristic_denial__multiseed_real.pkl:gym/config/neat/neat_config.ini | heuristic:denial |    2000 |    0.6348 |   0.0109 |       6.31 |      20.71 |        8.5 |
+| neat:gym/data/models/neat/neat__vs_heuristic_denial__multiseed_real.pkl:gym/config/neat/neat_config.ini | heuristic:denial |    1000 |    0.6287 |   0.0154 |       5.82 |      20.85 |        5.6 |
+| neat:gym/data/models/neat/neat__vs_heuristic_denial.pkl:gym/config/neat/neat_config.ini                 | heuristic:denial |    1000 |    0.5577 |   0.0159 |       2.56 |      20.13 |        4.9 |
+| neat:gym/data/models/neat/neat__vs_heuristic_denial.pkl:gym/config/neat/neat_config.ini                 | heuristic:denial |    1000 |    0.5653 |   0.0158 |       2.7  |      20.04 |        2.6 |
+| neat:gym/data/models/neat/neat__vs_heuristic_spread__multiseed_real.pkl:gym/config/neat/neat_config.ini | heuristic:spread |    2000 |    0.634  |   0.0109 |       7.42 |      19.51 |        7   |
+| neat:gym/data/models/neat/neat__vs_heuristic_spread.pkl:gym/config/neat/neat_config.ini                 | heuristic:spread |    2000 |    0.634  |   0.0109 |       7.42 |      19.51 |        6.1 |
+| system:gym/config/systems/system_neat.json                                                              | heuristic:denial |    5000 |    0.6347 |   0.0069 |       6.37 |      20.74 |       24.9 |
+| system:gym/config/systems/system_neat.json                                                              | heuristic:denial |    5000 |    0.6347 |   0.0069 |       6.37 |      20.74 |       28.8 |
+| system:gym/config/systems/system_neat.json                                                              | heuristic:spread |    5000 |    0.6971 |   0.0066 |      10.97 |      20.95 |       27.4 |
+| system:gym/config/systems/system_neat.json                                                              | heuristic:greedy |    5000 |    0.6262 |   0.0069 |       6.01 |      20.77 |       27.1 |
+| system:gym/config/systems/system_ppo.json                                                               | heuristic:denial |    5000 |    0.5877 |   0.007  |       4.67 |      20.42 |       45.2 |
+| system:gym/config/systems/system_ppo.json                                                               | heuristic:spread |    5000 |    0.6411 |   0.0068 |       7.96 |      20.25 |       44.3 |
+| system:gym/config/systems/system_ppo.json                                                               | heuristic:greedy |    5000 |    0.5844 |   0.007  |       4.54 |      20.6  |       43.1 |
+| system:gym/config/systems/system_dt.json                                                                | heuristic:denial |    5000 |    0.592  |   0.007  |       4.75 |      20.36 |       30.4 |
+| system:gym/config/systems/system_dt.json                                                                | heuristic:spread |    5000 |    0.6409 |   0.0068 |       8.06 |      20.56 |       32   |
+| system:gym/config/systems/system_dt.json                                                                | heuristic:greedy |    5000 |    0.5908 |   0.007  |       4.68 |      20.41 |       28.8 |
+| system:gym/config/systems/system_dt.json                                                                | heuristic:spread |    5000 |    0.6409 |   0.0068 |       8.06 |      20.56 |       40   |
+| system:gym/config/systems/system_dt.json                                                                | heuristic:greedy |    5000 |    0.5908 |   0.007  |       4.68 |      20.41 |       28.5 |

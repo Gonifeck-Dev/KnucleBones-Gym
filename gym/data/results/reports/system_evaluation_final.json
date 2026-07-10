@@ -1,0 +1,67 @@
+{
+  "results": {
+    "system_neat": {
+      "denial": {
+        "wr": 0.6347,
+        "se": 0.0069,
+        "diff": 6.37,
+        "wall": 28.8
+      },
+      "spread": {
+        "wr": 0.6971,
+        "se": 0.0066,
+        "diff": 10.97,
+        "wall": 27.4
+      },
+      "greedy": {
+        "wr": 0.6262,
+        "se": 0.0069,
+        "diff": 6.01,
+        "wall": 27.1
+      }
+    },
+    "system_ppo": {
+      "denial": {
+        "wr": 0.5877,
+        "se": 0.007,
+        "diff": 4.67,
+        "wall": 45.2
+      },
+      "spread": {
+        "wr": 0.6411,
+        "se": 0.0068,
+        "diff": 7.96,
+        "wall": 44.3
+      },
+      "greedy": {
+        "wr": 0.5844,
+        "se": 0.007,
+        "diff": 4.54,
+        "wall": 43.1
+      }
+    },
+    "system_dt": {
+      "denial": {
+        "wr": 0.592,
+        "se": 0.007,
+        "diff": 4.75,
+        "wall": 30.4
+      },
+      "spread": {
+        "wr": 0.6409,
+        "se": 0.0068,
+        "diff": 8.06,
+        "wall": 32.0
+      },
+      "greedy": {
+        "wr": 0.5908,
+        "se": 0.007,
+        "diff": 4.68,
+        "wall": 28.8
+      }
+    }
+  },
+  "games_per_matchup": 5000,
+  "seed": 123,
+  "total_time_seconds": 341.5
+}

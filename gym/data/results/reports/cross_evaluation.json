@@ -1,0 +1,284 @@
+{
+  "games_per_matchup": 2000,
+  "seed": 123,
+  "wall_time_seconds": 197.3,
+  "specialists": [
+    "neat_vs_denial",
+    "neat_vs_spread",
+    "neat_vs_greedy",
+    "ppo_vs_denial",
+    "ppo_vs_spread",
+    "ppo_vs_greedy",
+    "dt_vs_denial",
+    "dt_vs_spread",
+    "dt_vs_greedy"
+  ],
+  "opponents": [
+    "heuristic:denial",
+    "heuristic:spread",
+    "heuristic:greedy"
+  ],
+  "results": {
+    "neat_vs_denial": {
+      "denial": {
+        "winrate": 0.6348,
+        "se": 0.0109,
+        "wins": 1248,
+        "ties": 34,
+        "losses": 718,
+        "avg_diff": 6.31,
+        "is_training_opponent": true
+      },
+      "spread": {
+        "winrate": 0.6917,
+        "se": 0.0104,
+        "wins": 1362,
+        "ties": 31,
+        "losses": 607,
+        "avg_diff": 10.9,
+        "is_training_opponent": false
+      },
+      "greedy": {
+        "winrate": 0.6271,
+        "se": 0.0109,
+        "wins": 1236,
+        "ties": 29,
+        "losses": 735,
+        "avg_diff": 5.93,
+        "is_training_opponent": false
+      }
+    },
+    "neat_vs_spread": {
+      "denial": {
+        "winrate": 0.4964,
+        "se": 0.0113,
+        "wins": 971,
+        "ties": 44,
+        "losses": 985,
+        "avg_diff": -0.08,
+        "is_training_opponent": false
+      },
+      "spread": {
+        "winrate": 0.634,
+        "se": 0.0109,
+        "wins": 1242,
+        "ties": 41,
+        "losses": 717,
+        "avg_diff": 7.42,
+        "is_training_opponent": true
+      },
+      "greedy": {
+        "winrate": 0.499,
+        "se": 0.0113,
+        "wins": 976,
+        "ties": 44,
+        "losses": 980,
+        "avg_diff": -0.12,
+        "is_training_opponent": false
+      }
+    },
+    "neat_vs_greedy": {
+      "denial": {
+        "winrate": 0.6348,
+        "se": 0.0109,
+        "wins": 1248,
+        "ties": 34,
+        "losses": 718,
+        "avg_diff": 6.31,
+        "is_training_opponent": false
+      },
+      "spread": {
+        "winrate": 0.6917,
+        "se": 0.0104,
+        "wins": 1362,
+        "ties": 31,
+        "losses": 607,
+        "avg_diff": 10.9,
+        "is_training_opponent": false
+      },
+      "greedy": {
+        "winrate": 0.6271,
+        "se": 0.0109,
+        "wins": 1236,
+        "ties": 29,
+        "losses": 735,
+        "avg_diff": 5.93,
+        "is_training_opponent": true
+      }
+    },
+    "ppo_vs_denial": {
+      "denial": {
+        "winrate": 0.5979,
+        "se": 0.0111,
+        "wins": 1170,
+        "ties": 43,
+        "losses": 787,
+        "avg_diff": 4.63,
+        "is_training_opponent": true
+      },
+      "spread": {
+        "winrate": 0.6247,
+        "se": 0.0109,
+        "wins": 1227,
+        "ties": 36,
+        "losses": 737,
+        "avg_diff": 7.68,
+        "is_training_opponent": false
+      },
+      "greedy": {
+        "winrate": 0.5888,
+        "se": 0.0111,
+        "wins": 1154,
+        "ties": 40,
+        "losses": 806,
+        "avg_diff": 4.29,
+        "is_training_opponent": false
+      }
+    },
+    "ppo_vs_spread": {
+      "denial": {
+        "winrate": 0.5314,
+        "se": 0.0113,
+        "wins": 1042,
+        "ties": 39,
+        "losses": 919,
+        "avg_diff": 1.56,
+        "is_training_opponent": false
+      },
+      "spread": {
+        "winrate": 0.6497,
+        "se": 0.0108,
+        "wins": 1276,
+        "ties": 36,
+        "losses": 688,
+        "avg_diff": 7.94,
+        "is_training_opponent": true
+      },
+      "greedy": {
+        "winrate": 0.5347,
+        "se": 0.0113,
+        "wins": 1049,
+        "ties": 38,
+        "losses": 913,
+        "avg_diff": 1.5,
+        "is_training_opponent": false
+      }
+    },
+    "ppo_vs_greedy": {
+      "denial": {
+        "winrate": 0.6003,
+        "se": 0.0111,
+        "wins": 1173,
+        "ties": 46,
+        "losses": 781,
+        "avg_diff": 5.12,
+        "is_training_opponent": false
+      },
+      "spread": {
+        "winrate": 0.6263,
+        "se": 0.0109,
+        "wins": 1225,
+        "ties": 44,
+        "losses": 731,
+        "avg_diff": 8.12,
+        "is_training_opponent": false
+      },
+      "greedy": {
+        "winrate": 0.6022,
+        "se": 0.0111,
+        "wins": 1176,
+        "ties": 47,
+        "losses": 777,
+        "avg_diff": 5.05,
+        "is_training_opponent": true
+      }
+    },
+    "dt_vs_denial": {
+      "denial": {
+        "winrate": 0.5888,
+        "se": 0.0111,
+        "wins": 1154,
+        "ties": 40,
+        "losses": 806,
+        "avg_diff": 4.66,
+        "is_training_opponent": true
+      },
+      "spread": {
+        "winrate": 0.633,
+        "se": 0.0109,
+        "wins": 1240,
+        "ties": 41,
+        "losses": 719,
+        "avg_diff": 7.72,
+        "is_training_opponent": false
+      },
+      "greedy": {
+        "winrate": 0.5889,
+        "se": 0.0111,
+        "wins": 1156,
+        "ties": 37,
+        "losses": 807,
+        "avg_diff": 4.44,
+        "is_training_opponent": false
+      }
+    },
+    "dt_vs_spread": {
+      "denial": {
+        "winrate": 0.5495,
+        "se": 0.0112,
+        "wins": 1077,
+        "ties": 40,
+        "losses": 883,
+        "avg_diff": 2.01,
+        "is_training_opponent": false
+      },
+      "spread": {
+        "winrate": 0.6556,
+        "se": 0.0107,
+        "wins": 1289,
+        "ties": 34,
+        "losses": 677,
+        "avg_diff": 8.01,
+        "is_training_opponent": true
+      },
+      "greedy": {
+        "winrate": 0.5485,
+        "se": 0.0112,
+        "wins": 1075,
+        "ties": 40,
+        "losses": 885,
+        "avg_diff": 1.87,
+        "is_training_opponent": false
+      }
+    },
+    "dt_vs_greedy": {
+      "denial": {
+        "winrate": 0.6007,
+        "se": 0.0111,
+        "wins": 1178,
+        "ties": 39,
+        "losses": 783,
+        "avg_diff": 5.1,
+        "is_training_opponent": false
+      },
+      "spread": {
+        "winrate": 0.6509,
+        "se": 0.0108,
+        "wins": 1277,
+        "ties": 38,
+        "losses": 685,
+        "avg_diff": 8.75,
+        "is_training_opponent": false
+      },
+      "greedy": {
+        "winrate": 0.6013,
+        "se": 0.011,
+        "wins": 1181,
+        "ties": 36,
+        "losses": 783,
+        "avg_diff": 5.01,
+        "is_training_opponent": true
+      }
+    }
+  }
+}

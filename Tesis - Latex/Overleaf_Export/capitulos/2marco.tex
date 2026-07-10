@@ -1,0 +1,223 @@
+El presente capítulo tiene por finalidad describir los fundamentos conceptuales, tecnológicos y metodológicos asociados al uso de inteligencia artificial aplicada a videojuegos, con énfasis en la evaluación del rendimiento y desempeño del aprendizaje bajo restricciones de ejecución local. Se presentan conceptos clave sobre IA en videojuegos, aprendizaje automático, la distinción entre aprendizaje online y adaptación por selección, los costos asociados al entrenamiento de modelos, y nociones de modularidad y reproducibilidad experimental.
+
+A través de esta revisión se establece un marco conceptual que permite comprender: (i) por qué los videojuegos constituyen entornos relevantes para evaluar el aprendizaje de agentes, (ii) qué técnicas de IA resultan factibles bajo recursos computacionales limitados, (iii) cuáles son los costos reales del proceso de aprendizaje en cada paradigma, y (iv) qué alternativas existen cuando el entrenamiento en tiempo real no es viable.
+
+\section{Inteligencia Artificial en Videojuegos}
+
+La inteligencia artificial (IA) ha sido un componente central en el desarrollo de videojuegos desde sus primeras generaciones \cite{yannakakis2018ai}. Su propósito principal es controlar el comportamiento de personajes no jugadores (\textit{Non-Player Characters}, NPC), administrar dinámicas del entorno y ofrecer experiencias desafiantes y coherentes para el jugador humano.
+
+A diferencia de otras áreas de la IA, en videojuegos la toma de decisiones suele estar condicionada por restricciones de tiempo real, estabilidad del sistema y criterios de diseño (\textit{game design}); por lo tanto, la IA debe ser no solo efectiva, sino también controlable, predecible en su estructura y suficientemente interpretable para evitar comportamientos indeseados o desbalanceados.
+
+Tradicionalmente, la IA en videojuegos se ha implementado mediante enfoques deterministas y basados en reglas, entre los cuales destacan:
+
+\begin{itemize}
+    \item Máquinas de estados finitos (FSM).
+    \item Árboles de decisión.
+    \item Árboles de comportamiento (\textit{Behavior Trees}).
+    \item Sistemas basados en reglas y heurísticas.
+\end{itemize}
+
+Estos modelos presentan ventajas relevantes: bajo costo computacional, facilidad de depuración y control explícito del comportamiento. Sin embargo, su principal limitación es la ausencia de adaptación genuina: el agente no modifica su política a partir de la experiencia, y su comportamiento tiende a volverse predecible ante jugadores recurrentes, lo que puede afectar la rejugabilidad.
+
+\subsection{IA determinista vs. IA adaptativa}
+
+En términos generales, puede distinguirse entre:
+
+\begin{itemize}
+    \item \textbf{IA determinista:} ejecuta políticas fijas predefinidas (por ejemplo, reglas o árboles con parámetros constantes), sin mecanismos de actualización basados en datos.
+    \item \textbf{IA adaptativa:} modifica su comportamiento en función del jugador o del historial de interacción. Esta adaptación puede lograrse mediante reglas dinámicas diseñadas por el desarrollador o mediante técnicas de aprendizaje automático.
+\end{itemize}
+
+Una consideración relevante para esta investigación es que el término ``adaptativo'' no implica necesariamente entrenamiento profundo en tiempo real. En videojuegos, un enfoque adaptativo puede consistir en selección de estrategias, ajuste de parámetros o cambio de política en función de patrones observables, manteniendo control de diseño y costo computacional acotado.
+
+En el contexto de este trabajo, la adaptatividad se aborda desde una perspectiva centrada en el costo del aprendizaje: se investiga cuánto cuesta entrenar cada paradigma y se evalúa la adaptación por selección como alternativa al entrenamiento en tiempo real.
+
+\subsection{Aprendizaje online pleno vs. adaptación online por selección}
+
+Una distinción central para esta investigación es la diferencia entre dos formas de lograr comportamiento adaptativo en tiempo de ejecución:
+
+\begin{itemize}
+    \item \textbf{Aprendizaje online pleno}: consiste en actualizar los parámetros o pesos del modelo \textit{durante la partida}, utilizando las interacciones en curso como datos de entrenamiento. Esto requiere ejecutar algoritmos de optimización (retropropagación, evaluación de fitness, etc.) en tiempo real, con los costos computacionales y de datos asociados. Ejemplos: fine-tuning de una red neuronal con los turnos jugados, evolución de genomas con las partidas observadas.
+
+    \item \textbf{Adaptación online por selección}: no se actualizan los pesos del modelo en runtime. En su lugar, se mantiene un catálogo de políticas pre-entrenadas y se selecciona la más adecuada en función de un perfil del oponente construido en tiempo real. Esto requiere únicamente inferencia (microsegundos) y un módulo de perfilado ligero (por ejemplo, clustering), sin costo de entrenamiento durante la partida.
+\end{itemize}
+
+Esta distinción es relevante porque el término ``IA adaptativa'' en videojuegos frecuentemente se utiliza sin precisar cuál de estos dos mecanismos se está describiendo. El presente trabajo evalúa experimentalmente la viabilidad del primero y propone el segundo como alternativa demostrada.
+
+\section{Aprendizaje Automático (\textit{Machine Learning})}
+
+El \textit{Machine Learning} (ML) es una rama de la IA basada en la idea de que un sistema puede aprender patrones a partir de datos, mejorar su rendimiento con la experiencia y generalizar hacia nuevas situaciones sin ser programado explícitamente con reglas exhaustivas. En el contexto de videojuegos, el ML puede utilizarse para:
+
+\begin{itemize}
+    \item predecir acciones o preferencias del jugador,
+    \item clasificar estilos de juego (por ejemplo, agresivo o defensivo),
+    \item aprender políticas de decisión mediante interacción con el entorno,
+    \item aproximar funciones de evaluación o comportamiento.
+\end{itemize}
+
+Las principales categorías de ML se describen a continuación.
+
+\subsection{Aprendizaje supervisado}
+
+El aprendizaje supervisado entrena un modelo utilizando ejemplos etiquetados $(x, y)$, donde $x$ representa un conjunto de características (\textit{features}) y $y$ una salida objetivo (clase o valor). En videojuegos, esto resulta útil cuando se dispone de datos registrados (por ejemplo, decisiones por turno) y se busca:
+
+\begin{itemize}
+    \item predecir una acción a partir del estado,
+    \item imitar una política base (aprendizaje por imitación),
+    \item clasificar eventos o patrones del juego.
+\end{itemize}
+
+Una ventaja clave del aprendizaje supervisado es su eficiencia tanto en entrenamiento como en inferencia (dependiendo del modelo), además de su potencial interpretabilidad en modelos como los árboles de decisión.
+
+\subsection{Aprendizaje no supervisado}
+
+El aprendizaje no supervisado busca identificar estructura en datos sin etiquetas explícitas. Su aplicación en videojuegos incluye:
+
+\begin{itemize}
+    \item agrupamiento (\textit{clustering}) de jugadores según patrones de comportamiento,
+    \item reducción de dimensionalidad,
+    \item detección de anomalías o estilos de juego.
+\end{itemize}
+
+En el contexto de IA adaptativa, un modelo no supervisado puede actuar como módulo auxiliar que detecta perfiles y gatilla cambios de estrategia, sin necesariamente ejecutar directamente la política de juego.
+
+\subsection{Aprendizaje por refuerzo (\textit{Reinforcement Learning})}
+
+El aprendizaje por refuerzo (RL) modela el problema como un agente que interactúa con un entorno y recibe recompensas, aprendiendo una política $\pi(a \mid s)$ que maximiza el retorno esperado \cite{sutton2018reinforcement}. Sus elementos básicos son:
+
+\begin{itemize}
+    \item \textbf{Agente:} entidad que selecciona acciones.
+    \item \textbf{Entorno:} sistema con el que el agente interactúa.
+    \item \textbf{Estado $s$:} representación de la situación actual.
+    \item \textbf{Acción $a$:} decisión aplicada al entorno.
+    \item \textbf{Recompensa $r$:} retroalimentación numérica que guía el aprendizaje.
+    \item \textbf{Política $\pi$:} regla de decisión del agente.
+\end{itemize}
+
+RL es especialmente relevante en videojuegos por su naturaleza secuencial y por la posibilidad de generar episodios de interacción. No obstante, en escenarios de ejecución local, el entrenamiento de RL puede resultar costoso en tiempo y recursos computacionales, por lo que suele requerir simulaciones aceleradas o entrenamiento fuera del motor del juego para mantener un ciclo de iteración razonable.
+
+\section{Videojuegos como entornos de evaluación experimental}
+
+Los videojuegos pueden funcionar como entornos experimentales adecuados para evaluar agentes por diversas razones:
+
+\begin{itemize}
+    \item \textbf{Entornos controlados:} reglas explícitas y estados formalizables.
+    \item \textbf{Interacciones repetibles:} posibilidad de re-ejecutar episodios con semillas controladas.
+    \item \textbf{Retroalimentación inmediata:} métricas observables por turno o por episodio.
+    \item \textbf{Simulación acelerada:} en juegos por turnos, es posible ejecutar múltiples episodios rápidamente fuera del motor.
+\end{itemize}
+
+En esta investigación se prioriza un entorno con reglas simples y estado completamente observable, de modo que la comparación entre agentes sea atribuible al enfoque de IA y no a factores externos como percepción parcial compleja, navegación continua o variabilidad no controlada.
+
+\section{Ejecución local, modularidad e integración}
+
+La ejecución local impone restricciones prácticas relacionadas con capacidad de CPU/GPU, memoria disponible, estabilidad del proceso y latencias tolerables. En este escenario, el diseño arquitectónico se vuelve crítico para asegurar viabilidad y comparabilidad.
+
+\subsection{Separación de responsabilidades y arquitectura modular}
+
+Un principio de ingeniería relevante es la separación de responsabilidades (\textit{separation of concerns}): el juego debe encargarse de ejecutar reglas y transiciones de estado, mientras que los agentes deben encargarse exclusivamente de seleccionar acciones. Esta separación habilita una arquitectura \textit{plug-and-play}, donde distintos agentes pueden intercambiarse sin modificar el núcleo del videojuego.
+
+En esta investigación, la modularidad se considera un requisito metodológico, dado que permite:
+
+\begin{itemize}
+    \item comparar agentes bajo reglas idénticas,
+    \item centralizar el cálculo de características para evitar inconsistencias,
+    \item registrar métricas de forma uniforme,
+    \item reducir acoplamiento y complejidad de mantenimiento.
+\end{itemize}
+
+Este principio se operacionaliza mediante el concepto de \textit{juego inmutable}, donde el motor se limita a ejecutar reglas y transiciones de estado, mientras que cualquier lógica específica de IA permanece desacoplada y reemplazable.
+
+\subsection{Entornos equivalentes tipo \textit{Gym}}
+
+Debido a restricciones de tiempo y costo de iteración, resulta práctico entrenar o evaluar ciertos modelos fuera del motor del juego mediante un entorno equivalente tipo \textit{Gym} \cite{brockman2016openai}. Este entorno replica las reglas relevantes y expone una interfaz estándar (observación, acción, recompensa y terminación), permitiendo ejecutar episodios a mayor velocidad y generar datasets de forma eficiente.
+
+Este enfoque es coherente con la ejecución local, ya que tanto el entrenamiento como la evaluación continúan realizándose en el hardware del usuario, pero desacoplados del motor, lo cual facilita la instrumentación y la reproducibilidad.
+
+Para preservar la validez experimental, el entorno equivalente debe cumplir equivalencia funcional respecto al motor del juego. En términos prácticos, esto implica que, para una misma transición estado--acción, ambos entornos produzcan el mismo estado resultante. Este criterio puede verificarse mediante trazas de referencia (\textit{golden logs}) y pruebas sistemáticas de transición.
+
+\section{Reproducibilidad experimental e instrumentación}
+
+En trabajos experimentales, la reproducibilidad es fundamental para validar resultados y comparar enfoques. En el contexto de videojuegos, esto requiere controlar fuentes de aleatoriedad y asegurar trazabilidad completa de ejecuciones.
+
+\subsection{Semillas y control de aleatoriedad}
+
+El uso de semillas permite controlar generadores de números aleatorios (RNG) tanto en el entorno como en los agentes. Al fijar una semilla, una secuencia de eventos aleatorios (por ejemplo, valores de dados o desempates) puede repetirse, habilitando comparaciones justas entre agentes bajo condiciones homogéneas.
+
+\subsection{Registro estructurado (\textit{logging})}
+
+El registro estructurado de decisiones por turno permite:
+
+\begin{itemize}
+    \item reconstruir partidas completas,
+    \item analizar causas de decisiones,
+    \item medir latencia y costo computacional,
+    \item construir datasets para entrenamiento supervisado,
+    \item comparar estabilidad y variabilidad entre ejecuciones.
+\end{itemize}
+
+En este trabajo, el registro estructurado se plantea como componente metodológico central, ya que actúa como evidencia experimental y soporte para el análisis cuantitativo.
+
+\section{Costos computacionales y de datos del entrenamiento}
+
+El proceso de entrenamiento de modelos de aprendizaje automático implica costos que varían significativamente según el paradigma utilizado. Comprender estos costos es fundamental para evaluar la viabilidad de cada enfoque bajo restricciones de ejecución local.
+
+\subsection{Aprendizaje por refuerzo}
+
+El entrenamiento de agentes por RL requiere que el agente interactúe con el entorno durante cientos de miles o millones de pasos (\textit{timesteps}). Algoritmos como PPO \cite{schulman2017ppo} utilizan rollouts (secuencias de interacción) para estimar gradientes de política. El volumen de datos necesario depende de la complejidad del entorno, pero en la práctica se requieren entre $10^5$ y $10^7$ timesteps para juegos simples \cite{sutton2018reinforcement}. Este volumen es generado por el propio proceso de entrenamiento interactuando con un simulador, no por jugadores humanos.
+
+\subsection{Neuroevolución}
+
+Los algoritmos evolutivos como NEAT \cite{stanley2002neat} evalúan poblaciones completas de candidatos (genomas) durante múltiples generaciones. El costo total se expresa como: generaciones $\times$ tamaño de población $\times$ episodios por genoma. Con poblaciones de 150 individuos, 300 generaciones y 50--100 episodios por evaluación, el volumen total de episodios puede alcanzar millones. A diferencia de RL, la evaluación de cada individuo es independiente y paralelizable, pero el volumen total sigue siendo elevado.
+
+\subsection{Aprendizaje supervisado (destilación)}
+
+El aprendizaje supervisado por imitación (\textit{Behavior Cloning}) \cite{hussein2017imitation} es computacionalmente ligero en la fase de entrenamiento del modelo (segundos), pero depende de un dataset generado previamente. Este dataset requiere un teacher ya entrenado (por ejemplo, un agente PPO), lo que traslada el costo a una etapa anterior. El volumen de datos etiquetados necesario es del orden de $10^5$--$10^6$ muestras para lograr fidelidad superior al 90\%.
+
+\subsection{Implicaciones para el aprendizaje en tiempo real}
+
+Los costos descritos permiten anticipar que el entrenamiento en tiempo real ---donde los datos provienen exclusivamente de la interacción con un jugador humano durante una sesión de juego--- enfrenta una limitación fundamental: el jugador humano genera órdenes de magnitud menos datos de los requeridos por cualquiera de estos paradigmas. Esta brecha se cuantifica experimentalmente en el Capítulo~\ref{cap:aplicacion}.
+
+\section{Paradigmas de aprendizaje evaluados en el proyecto}
+
+Con el objetivo de evaluar el rendimiento y desempeño del aprendizaje bajo restricciones locales, se seleccionaron tres paradigmas representativos que cubren distintas familias de aprendizaje automático y presentan costos de entrenamiento contrastados:
+
+\begin{itemize}
+    \item \textbf{Aprendizaje por refuerzo (PPO):} el agente aprende una política mediante interacción con el entorno, optimizando el retorno esperado. Representa el paradigma de mayor costo de datos.
+    \item \textbf{Neuroevolución (NEAT):} el agente evoluciona mediante algoritmos genéticos que optimizan la topología y pesos de redes neuronales. Representa un costo intermedio con alta paralelizabilidad.
+    \item \textbf{Aprendizaje supervisado destilado (DT):} el agente aprende por imitación de un teacher previamente entrenado (PPO), produciendo un modelo ligero e interpretable. Representa el menor costo de entrenamiento directo, pero depende de un teacher.
+\end{itemize}
+
+Adicionalmente, el proyecto emplea componentes auxiliares que no constituyen paradigmas de aprendizaje independientes:
+
+\begin{itemize}
+    \item \textbf{Heurísticas:} políticas deterministas diseñadas manualmente que sirven como baseline y como oponentes de entrenamiento.
+    \item \textbf{Perfilador KMeans:} módulo no supervisado que clasifica el estilo del oponente para habilitar la selección de especialistas.
+\end{itemize}
+
+Esta selección permite estudiar la relación entre desempeño y costo computacional, y cuantificar qué se obtiene realmente al incorporar aprendizaje respecto a una política base. La combinación de los tres paradigmas con el perfilador KMeans conforma los sistemas adaptativos evaluados.
+
+\section{Métricas de evaluación}
+
+Para medir el rendimiento y desempeño del aprendizaje se requieren métricas en dos niveles complementarios: el costo del proceso de aprendizaje y el desempeño del agente resultante.
+
+\subsection{Métricas de costo del aprendizaje (nivel primario)}
+
+\begin{itemize}
+    \item \textbf{Datos requeridos:} volumen de muestras, episodios o timesteps necesarios para que el modelo converja a una política funcional.
+    \item \textbf{Tiempo de entrenamiento:} duración del proceso de entrenamiento medida en segundos de reloj (\textit{wall time}).
+    \item \textbf{Uso de CPU y memoria:} costo de recursos computacionales durante el entrenamiento.
+    \item \textbf{Tamaño del modelo resultante:} espacio en disco del artefacto entrenado.
+    \item \textbf{Brecha de datos:} relación entre los datos requeridos y los disponibles en una sesión real contra un jugador humano.
+\end{itemize}
+
+\subsection{Métricas de desempeño del agente (nivel secundario)}
+
+\begin{itemize}
+    \item \textbf{Tasa de victoria (\textit{winrate}):} proporción de partidas ganadas, que confirma que el agente entrenado es funcional.
+    \item \textbf{Diferencial de puntaje:} diferencia promedio entre el puntaje del agente y el del oponente.
+    \item \textbf{Estabilidad:} variabilidad de resultados entre ejecuciones repetidas.
+    \item \textbf{Latencia de decisión:} tiempo requerido para seleccionar una acción por turno (relevante para la viabilidad operativa).
+\end{itemize}
+
+El análisis conjunto de ambos niveles permite estudiar el compromiso (\textit{trade-off}) entre el costo del aprendizaje y la calidad del agente resultante, determinando si la inversión en entrenamiento se justifica y bajo qué condiciones es viable.

@@ -1,7 +1,7 @@
 {
   "name": "system_neat",
-  "kmeans_artifact": "gym/data/models/kmeans/kmeans__v2__k4__win6__seed123.joblib",
-  "response_table": "gym/data/models/systems/response_table__system_neat.json",
+  "kmeans_artifact": "gym/data/models/kmeans/kmeans_profiler",
+  "response_table": "response_table_neat",
   "my_player_id": 0,
   "fallback_policy_spec": "neat:gym/data/models/neat/neat__vs_heuristic_denial.pkl:gym/config/neat/neat_config.ini"
 }

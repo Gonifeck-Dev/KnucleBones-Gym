@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: apellido-informe-INV.aux
+Reallocating 'name_of_file' (item size: 1) to 7 items.
+The style file: ieeetr.bst
+Reallocating 'name_of_file' (item size: 1) to 14 items.
+A level-1 auxiliary file: titlepage.aux
+Reallocating 'name_of_file' (item size: 1) to 13 items.
+Database file #1: bibliografia.bib
+You've used 18 entries,
+            1876 wiz_defined-function locations,
+            586 strings with 7181 characters,
+and the built_in function-call counts, 4635 in all, are:
+= -- 414
+> -- 286
+< -- 0
++ -- 103
+- -- 85
+* -- 353
+:= -- 724
+add.period$ -- 26
+call.type$ -- 18
+change.case$ -- 16
+chr.to.int$ -- 0
+cite$ -- 18
+duplicate$ -- 189
+empty$ -- 409
+format.name$ -- 85
+if$ -- 1087
+int.to.chr$ -- 0
+int.to.str$ -- 18
+missing$ -- 16
+newline$ -- 65
+num.names$ -- 18
+pop$ -- 65
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 116
+stack$ -- 0
+substring$ -- 214
+swap$ -- 65
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 42
+width$ -- 20
+write$ -- 182

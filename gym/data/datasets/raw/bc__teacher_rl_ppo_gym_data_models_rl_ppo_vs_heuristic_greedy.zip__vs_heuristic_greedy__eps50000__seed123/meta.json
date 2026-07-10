@@ -1,23 +1,23 @@
 {
   "dataset_name": "bc__teacher_rl_ppo_gym_data_models_rl_ppo_vs_heuristic_greedy.zip__vs_heuristic_greedy__eps50000__seed123",
-  "created_utc": "20260304_024525",
+  "created_utc": "20260305_060702",
   "episodes": 50000,
   "seed": 123,
   "teacher": "rl:PPO:gym/data/models/rl/PPO__vs_heuristic_greedy.zip",
   "opponent": "heuristic:greedy",
-  "n_samples": 583650,
+  "n_samples": 579063,
   "n_features": 21,
   "format": "npz (X,y)",
   "feature_extractor": "gym.policies.utils.features.extract_features",
   "turn_protocol": "die=env.roll_die(); obs=env._get_obs(die); step(action, dice_value=die)",
   "notes": "Behavior cloning dataset.",
-  "wall_time_seconds": 299.266,
-  "episodes_per_second": 167.08,
-  "dataset_size_bytes": 5965723,
+  "wall_time_seconds": 301.92,
+  "episodes_per_second": 165.61,
+  "dataset_size_bytes": 5866058,
   "action_distribution": {
-    "0": 211725,
-    "1": 208148,
-    "2": 163777
+    "0": 211125,
+    "1": 224146,
+    "2": 143792
   },
-  "action_balance_ratio": 0.7735
+  "action_balance_ratio": 0.6415
 }

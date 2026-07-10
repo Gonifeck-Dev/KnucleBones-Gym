@@ -1,0 +1,96 @@
+\begin{thebibliography}{10}
+
+\bibitem{juliani2018mlagents}
+A.~Juliani, V.-P. Berges, E.~Teng, A.~Cohen, J.~Harper, C.~Elion, C.~Goy,
+  Y.~Gao, H.~Henry, M.~Mattar, and D.~Lange, ``Unity: A general platform for
+  intelligent agents.'' arXiv preprint arXiv:1809.02627, 2018.
+\newblock Unity Technologies.
+
+\bibitem{brockman2016openai}
+G.~Brockman, V.~Cheung, L.~Pettersson, J.~Schneider, J.~Schulman, J.~Tang, and
+  W.~Zaremba, ``Openai gym,'' {\em arXiv preprint arXiv:1606.01540}, 2016.
+
+\bibitem{raffin2021sb3}
+A.~Raffin, A.~Hill, A.~Gleave, A.~Kanervisto, M.~Ernestus, and N.~Dorber,
+  ``Stable-baselines3: Reliable reinforcement learning implementations,'' {\em
+  Journal of Machine Learning Research}, vol.~22, no.~268, pp.~1--8, 2021.
+
+\bibitem{yannakakis2018ai}
+G.~N. Yannakakis and J.~Togelius, {\em Artificial Intelligence and Games}.
+\newblock Springer, 2018.
+
+\bibitem{sutton2018reinforcement}
+R.~S. Sutton and A.~G. Barto, {\em Reinforcement Learning: An Introduction}.
+\newblock MIT Press, 2nd~ed., 2018.
+
+\bibitem{schulman2017ppo}
+J.~Schulman, F.~Wolski, P.~Dhariwal, A.~Radford, and O.~Klimov, ``Proximal
+  policy optimization algorithms,'' {\em arXiv preprint arXiv:1707.06347},
+  2017.
+
+\bibitem{stanley2002neat}
+K.~O. Stanley and R.~Miikkulainen, ``Evolving neural networks through
+  augmenting topologies,'' {\em Evolutionary Computation}, vol.~10, no.~2,
+  pp.~99--127, 2002.
+
+\bibitem{hussein2017imitation}
+A.~Hussein, M.~M. Gaber, E.~Elyan, and C.~Jayne, ``Imitation learning: A survey
+  of learning methods,'' {\em ACM Computing Surveys}, vol.~50, no.~2,
+  pp.~1--35, 2017.
+
+\bibitem{arcraiders2025site}
+{Embark Studios}, ``Arc raiders --- sitio oficial.''
+  \url{https://arcraiders.com/es}, 2025.
+\newblock Consultado: marzo 2026.
+
+\bibitem{arcraiders2025interview}
+C.~Livingston, ``Arc raiders full interview: Nobody whatsoever thought we'd
+  have this many players.''
+  \url{https://www.pcgamer.com/games/third-person-shooter/arc-raiders-full-interview-nobody-whatsoever-thought-wed-have-this-many-players/},
+  2025.
+\newblock Entrevista con desarrolladores de Embark Studios. Consultado: marzo
+  2026.
+
+\bibitem{arcraiders2025steam}
+{Embark Studios}, ``Arc raiders en steam.''
+  \url{https://store.steampowered.com/app/1808500/ARC_Raiders/}, 2025.
+\newblock P\'{a}gina oficial del producto. Consultado: marzo 2026.
+
+\bibitem{silver2016mastering}
+D.~Silver, A.~Huang, C.~J. Maddison, A.~Guez, L.~Sifre, G.~Van Den~Driessche,
+  J.~Schrittwieser, I.~Antonoglou, V.~Panneershelvam, M.~Lanctot, {\em et~al.},
+  ``Mastering the game of go with deep neural networks and tree search,'' {\em
+  Nature}, vol.~529, no.~7587, pp.~484--489, 2016.
+
+\bibitem{vinyals2019grandmaster}
+O.~Vinyals, I.~Babuschkin, W.~M. Czarnecki, M.~Mathieu, A.~Dudzik, J.~Chung,
+  D.~H. Choi, R.~Powell, T.~Ewalds, P.~Georgiev, {\em et~al.}, ``Grandmaster
+  level in starcraft ii using multi-agent reinforcement learning,'' {\em
+  Nature}, vol.~575, no.~7782, pp.~350--354, 2019.
+
+\bibitem{mnih2015dqn}
+V.~Mnih, K.~Kavukcuoglu, D.~Silver, A.~A. Rusu, J.~Veness, M.~G. Bellemare,
+  A.~Graves, M.~Riedmiller, A.~K. Fidjeland, G.~Ostrovski, {\em et~al.},
+  ``Human-level control through deep reinforcement learning,'' {\em Nature},
+  vol.~518, no.~7540, pp.~529--533, 2015.
+
+\bibitem{yannakakis2013player}
+G.~N. Yannakakis, P.~Spronck, D.~Loiacono, and E.~Andr{\'e}, ``Player
+  modeling,'' {\em Artificial and Computational Intelligence in Games},
+  pp.~45--59, 2013.
+
+\bibitem{breiman1984classification}
+L.~Breiman, J.~Friedman, C.~J. Stone, and R.~A. Olshen, {\em Classification and
+  Regression Trees}.
+\newblock Chapman and Hall/CRC, 1984.
+
+\bibitem{neatpython2023}
+{neat-python contributors}, ``neat-python: A neat implementation in python.''
+  \url{https://github.com/CodeReclaimers/neat-python}, 2023.
+\newblock Software library.
+
+\bibitem{lloyd1982kmeans}
+S.~P. Lloyd, ``Least squares quantization in pcm,'' {\em IEEE Transactions on
+  Information Theory}, vol.~28, no.~2, pp.~129--137, 1982.
+
+\end{thebibliography}

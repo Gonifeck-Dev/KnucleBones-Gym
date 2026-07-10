@@ -18,6 +18,8 @@ La **adaptación online por selección** (player modeling + gating) puede entreg
 3. Perfilado del oponente con KMeans (ventana temporal)
 4. Selección del mejor especialista por cluster (Response Table)
 
+**Resultado experimental**: La hipótesis se valida parcialmente. Los tres paradigmas logran WR 60-65% contra heurísticos. NEAT con entrenamiento multi-seed real alcanza WR = 0.653, significativamente superior a PPO (0.604) y DT (0.608). La adaptación KMeans es arquitectónicamente válida pero no aporta mejora en este dominio específico (Knucklebones).
+
 ## 3. Antecedentes en la industria
 
 ### 3.1 El caso ARC Raiders
@@ -45,7 +47,7 @@ El aprendizaje en tiempo real no es viable en hardware local para juegos comerci
 
 - **DT (Decision Tree)**: Inferencia en microsegundos, explicable, ideal para deployment. Limitación: no aprende solo, necesita teacher.
 - **PPO (Reinforcement Learning)**: Aprende políticas fuertes por refuerzo. Estable, well-documented. Costo: entrenamiento largo, modelo pesado.
-- **NEAT (Neuroevolución)**: Evoluciona estructura + pesos sin gradientes. Puede encontrar soluciones creativas. Costo: convergencia lenta, CPU intensivo.
+- **NEAT (Neuroevolución)**: Evoluciona estructura + pesos sin gradientes. Puede encontrar soluciones creativas. Costo: convergencia lenta, CPU intensivo. **Hallazgo clave**: con entrenamiento multi-seed real (evaluar cada genoma contra múltiples secuencias de dados), NEAT supera significativamente a PPO y DT, pasando de WR ≈ 0.50 (sin converger) a WR = 0.653.
 
 ### 4.2 ¿Por qué KMeans?
 - No requiere datos etiquetados

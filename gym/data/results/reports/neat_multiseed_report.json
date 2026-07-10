@@ -1,0 +1,38 @@
+{
+  "opponents": [
+    "heuristic:greedy"
+  ],
+  "seeds": [
+    123,
+    456,
+    789
+  ],
+  "generations": 300,
+  "episodes_per_genome": 100,
+  "eval_games": 1000,
+  "total_wall_time_seconds": 4743.9,
+  "best_per_opponent": {
+    "heuristic:greedy": {
+      "seed": 123,
+      "fitness": 0.8753200000000001,
+      "eval_winrate": 0.6243602865916069,
+      "all_candidates": [
+        {
+          "seed": 123,
+          "fitness": 0.8753200000000001,
+          "eval_winrate": 0.6243602865916069
+        },
+        {
+          "seed": 456,
+          "fitness": 0.8407000000000001,
+          "eval_winrate": 0.6243602865916069
+        },
+        {
+          "seed": 789,
+          "fitness": 0.8687600000000002,
+          "eval_winrate": 0.6243602865916069
+        }
+      ]
+    }
+  }
+}

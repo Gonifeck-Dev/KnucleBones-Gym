@@ -86,11 +86,15 @@ python -m gym.scripts.kmeans.build_response_table \
 ```
 
 ### 2.6 Paso 6 — NEAT especialistas (para Sistema NEAT comparativo)
+
+Entrenamiento con multi-seed real (3 seeds simultáneas en fitness, 300 generaciones):
 ```bash
-python -m gym.scripts.neat.train_neat --opponent heuristic:denial --generations 50
-python -m gym.scripts.neat.train_neat --opponent heuristic:spread --generations 50
-python -m gym.scripts.neat.train_neat --opponent heuristic:greedy --generations 50
+python -m gym.scripts.neat.train_neat --opponent heuristic:denial --generations 300 --episodes-per-genome 34 --seeds "123,456,789"
+python -m gym.scripts.neat.train_neat --opponent heuristic:spread --generations 300 --episodes-per-genome 34 --seeds "123,456,789"
+python -m gym.scripts.neat.train_neat --opponent heuristic:greedy --generations 300 --episodes-per-genome 34 --seeds "123,456,789"
 ```
+
+> **Multi-seed real**: Cada genoma se evalúa contra 3 seeds simultáneamente (34 × 3 = 102 episodios), promediando fitness. Esto previene sobreajuste a una secuencia determinista y fue la técnica que permitió a NEAT alcanzar WR = 0.653 (vs 0.499 con seed fija).
 
 ---
 

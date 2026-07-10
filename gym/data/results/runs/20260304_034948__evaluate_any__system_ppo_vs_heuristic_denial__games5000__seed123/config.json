@@ -1,0 +1,13 @@
+{
+  "run_name": "20260304_034948__evaluate_any__system_ppo_vs_heuristic_denial__games5000__seed123",
+  "algo_tag": "evaluate_any",
+  "p0_name": "system_ppo",
+  "p1_name": "heuristic_denial",
+  "games": 5000,
+  "seed": 123,
+  "created_utc": "20260304_034948",
+  "extra": {
+    "p0_spec": "system:gym/config/systems/system_ppo.json",
+    "p1_spec": "heuristic:denial"
+  }
+}

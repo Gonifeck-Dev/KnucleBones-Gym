@@ -1,0 +1,118 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{Lista de Acrónimos}{\es@scroman {v}}{chapter*.3}%
+\contentsline {chapter}{Glosario}{\es@scroman {vi}}{chapter*.4}%
+\contentsline {chapter}{\numberline {1}Introducción}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Presentación del área y su problemática}{1}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Contexto de aplicación del proyecto}{1}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Presentación de los procesos del ámbito del proyecto}{1}{subsection.1.1.2}%
+\contentsline {subsubsection}{Evolución del alcance del proyecto}{2}{section*.8}%
+\contentsline {subsection}{\numberline {1.1.3}Descripción del Problema}{3}{subsection.1.1.3}%
+\contentsline {section}{\numberline {1.2}Propuesta de solución}{4}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Separación entre entrenamiento y ejecución}{5}{subsection.1.2.1}%
+\contentsline {section}{\numberline {1.3}Justificación de la propuesta}{5}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Objetivos}{6}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}Objetivo General}{6}{subsection.1.4.1}%
+\contentsline {section}{\numberline {1.5}Alcance y limitaciones}{6}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}Objetivos Específicos}{6}{subsection.1.5.1}%
+\contentsline {subsection}{\numberline {1.5.2}Descripción de actividades}{7}{subsection.1.5.2}%
+\contentsline {section}{\numberline {1.6}Descripción de los Aspectos Fundamentales de la Metodología Utilizada}{8}{section.1.6}%
+\contentsline {section}{\numberline {1.7}Composición del informe}{8}{section.1.7}%
+\contentsline {chapter}{\numberline {2}Bases Teóricas y Antecedentes}{10}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Inteligencia Artificial en Videojuegos}{10}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}IA determinista vs. IA adaptativa}{11}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Aprendizaje online pleno vs. adaptación online por selección}{11}{subsection.2.1.2}%
+\contentsline {section}{\numberline {2.2}Aprendizaje Automático (\textit {Machine Learning})}{12}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Aprendizaje supervisado}{12}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Aprendizaje no supervisado}{12}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Aprendizaje por refuerzo (\textit {Reinforcement Learning})}{12}{subsection.2.2.3}%
+\contentsline {section}{\numberline {2.3}Videojuegos como entornos de evaluación experimental}{13}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Ejecución local, modularidad e integración}{13}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Separación de responsabilidades y arquitectura modular}{13}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Entornos equivalentes tipo \textit {Gym}}{14}{subsection.2.4.2}%
+\contentsline {section}{\numberline {2.5}Reproducibilidad experimental e instrumentación}{14}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Semillas y control de aleatoriedad}{14}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Registro estructurado (\textit {logging})}{14}{subsection.2.5.2}%
+\contentsline {section}{\numberline {2.6}Costos computacionales y de datos del entrenamiento}{15}{section.2.6}%
+\contentsline {subsection}{\numberline {2.6.1}Aprendizaje por refuerzo}{15}{subsection.2.6.1}%
+\contentsline {subsection}{\numberline {2.6.2}Neuroevolución}{15}{subsection.2.6.2}%
+\contentsline {subsection}{\numberline {2.6.3}Aprendizaje supervisado (destilación)}{15}{subsection.2.6.3}%
+\contentsline {subsection}{\numberline {2.6.4}Implicaciones para el aprendizaje en tiempo real}{15}{subsection.2.6.4}%
+\contentsline {section}{\numberline {2.7}Paradigmas de aprendizaje evaluados en el proyecto}{15}{section.2.7}%
+\contentsline {section}{\numberline {2.8}Métricas de evaluación}{16}{section.2.8}%
+\contentsline {subsection}{\numberline {2.8.1}Métricas de costo del aprendizaje (nivel primario)}{16}{subsection.2.8.1}%
+\contentsline {subsection}{\numberline {2.8.2}Métricas de desempeño del agente (nivel secundario)}{16}{subsection.2.8.2}%
+\contentsline {chapter}{\numberline {3}Estado del Arte}{18}{chapter.3}%
+\contentsline {section}{\numberline {3.1}IA clásica en videojuegos comerciales}{18}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Adaptación sin aprendizaje online pleno}{18}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Caso Alien: Isolation (Creative Assembly, 2014)}{18}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Caso Metal Gear Solid V (Konami, 2015)}{19}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Síntesis: adaptación por diseño, no por entrenamiento}{19}{subsection.3.2.3}%
+\contentsline {section}{\numberline {3.3}Machine Learning en desarrollo y despliegue offline}{19}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Caso ARC Raiders (Embark Studios)}{19}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Uso industrial de ML en videojuegos}{19}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Síntesis de casos industriales}{20}{subsection.3.3.3}%
+\contentsline {section}{\numberline {3.4}Brecha entre logros académicos y despliegue real}{20}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Adaptación basada en perfilado de jugador}{20}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Ejecución local versus infraestructura en nube}{21}{section.3.6}%
+\contentsline {section}{\numberline {3.7}Limitaciones identificadas en el estado del arte}{21}{section.3.7}%
+\contentsline {section}{\numberline {3.8}Posicionamiento del presente trabajo}{21}{section.3.8}%
+\contentsline {chapter}{\numberline {4}Desarrollo del Trabajo}{23}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Arquitectura General del Sistema}{23}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Formalización Matemática del Entorno}{24}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Definición del Estado}{24}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Función de Puntuación}{24}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Regla de Eliminación}{25}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Función de Transición}{25}{subsection.4.2.4}%
+\contentsline {section}{\numberline {4.3}Diseño del Entorno de Juego}{26}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Middleware y Comunicación}{27}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Representación del Estado y Extracción de Características}{28}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Sistema de Logging e Instrumentación}{28}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Control de Aleatoriedad}{28}{section.4.7}%
+\contentsline {section}{\numberline {4.8}Entorno de Entrenamiento Equivalente (Gym)}{29}{section.4.8}%
+\contentsline {section}{\numberline {4.9}Validación del Simulador Externo}{29}{section.4.9}%
+\contentsline {subsection}{\numberline {4.9.1}Pruebas de Equivalencia Funcional}{29}{subsection.4.9.1}%
+\contentsline {section}{\numberline {4.10}Definición Formal de la Política Baseline}{30}{section.4.10}%
+\contentsline {subsection}{\numberline {4.10.1}Aleatoriedad Acotada}{30}{subsection.4.10.1}%
+\contentsline {subsection}{\numberline {4.10.2}Control de Aleatoriedad}{30}{subsection.4.10.2}%
+\contentsline {section}{\numberline {4.11}Protocolo Experimental}{30}{section.4.11}%
+\contentsline {subsection}{\numberline {4.11.1}Métricas de desempeño}{30}{subsection.4.11.1}%
+\contentsline {subsection}{\numberline {4.11.2}Métricas computacionales}{31}{subsection.4.11.2}%
+\contentsline {section}{\numberline {4.12}Criterios de Viabilidad para Entrenamiento en Tiempo Real}{31}{section.4.12}%
+\contentsline {subsection}{\numberline {4.12.1}Disponibilidad de datos en una sesión real}{31}{subsection.4.12.1}%
+\contentsline {subsection}{\numberline {4.12.2}Requisitos de entrenamiento por paradigma}{31}{subsection.4.12.2}%
+\contentsline {subsection}{\numberline {4.12.3}Criterio de brecha}{31}{subsection.4.12.3}%
+\contentsline {subsection}{\numberline {4.12.4}Criterio de estabilidad}{32}{subsection.4.12.4}%
+\contentsline {chapter}{\numberline {5}Resultados}{33}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Diseño Experimental}{33}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Entrenamiento de Modelos}{34}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Análisis de Brecha: Viabilidad del Aprendizaje en Tiempo Real}{35}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Datos disponibles en una sesión real}{36}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Interpretación de la brecha}{36}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Análisis de sensibilidad}{37}{subsection.5.3.3}%
+\contentsline {subsection}{\numberline {5.3.4}Conclusión parcial}{37}{subsection.5.3.4}%
+\contentsline {section}{\numberline {5.4}Calidad de Destilación PPO a DT}{37}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Perfilado KMeans}{38}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Evaluación de los Tres Sistemas Adaptativos}{38}{section.5.6}%
+\contentsline {subsection}{\numberline {5.6.1}Resultados detallados por sistema}{39}{subsection.5.6.1}%
+\contentsline {section}{\numberline {5.7}Análisis Estadístico entre Sistemas}{39}{section.5.7}%
+\contentsline {section}{\numberline {5.8}Ablation Study: ¿Aporta la Adaptación KMeans?}{42}{section.5.8}%
+\contentsline {subsection}{\numberline {5.8.1}Dominancia en Response Tables}{42}{subsection.5.8.1}%
+\contentsline {section}{\numberline {5.9}Evaluación Cruzada: Generalización vs Sobreajuste}{43}{section.5.9}%
+\contentsline {section}{\numberline {5.10}NEAT: Convergencia, Entrenamiento Extendido y Multi-seed}{45}{section.5.10}%
+\contentsline {section}{\numberline {5.11}Discusión}{46}{section.5.11}%
+\contentsline {subsection}{\numberline {5.11.1}Comparativa consolidada de paradigmas}{46}{subsection.5.11.1}%
+\contentsline {subsection}{\numberline {5.11.2}Hallazgos principales}{48}{subsection.5.11.2}%
+\contentsline {subsection}{\numberline {5.11.3}Implicaciones}{49}{subsection.5.11.3}%
+\contentsline {subsection}{\numberline {5.11.4}Limitaciones observadas}{49}{subsection.5.11.4}%
+\contentsline {chapter}{\numberline {6}Conclusiones}{50}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Conclusiones por Objetivo}{50}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Medición del costo de aprendizaje}{50}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Brecha entre entrenamiento offline y sesión real}{50}{subsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.1.3}Adaptación por selección como alternativa}{51}{subsection.6.1.3}%
+\contentsline {subsection}{\numberline {6.1.4}Desempeño de los sistemas adaptativos}{51}{subsection.6.1.4}%
+\contentsline {subsection}{\numberline {6.1.5}Diseño de la plataforma experimental}{51}{subsection.6.1.5}%
+\contentsline {section}{\numberline {6.2}Conclusión General}{51}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Trabajo Futuro}{52}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Reflexiones}{53}{section.6.4}%
+\contentsline {chapter}{Referencias}{54}{section*.45}%
+\contentsline {chapter}{\numberline {A}Plan de Trabajo y Carta Gantt}{56}{appendix.Alph1}%

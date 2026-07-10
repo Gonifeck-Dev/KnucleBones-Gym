@@ -1,0 +1,171 @@
+El plan de trabajo se estructuró en fases iterativas que reflejan la evolución real del proyecto. La planificación inicial contempló un prototipo FPS exploratorio, el cual fue abandonado por razones metodológicas en favor de un entorno controlado basado en Knucklebones.
+
+Las fechas ancla verificables del proyecto son:
+\begin{itemize}
+    \item 18/04/2025: primera propuesta conceptual aprobada con observaciones.
+    \item 03/05/2025: segunda propuesta refinada y aceptada por el comité.
+    \item 11/06/2025: presentación del prototipo FPS con movimiento básico en Unity.
+    \item 20/02/2026: contexto técnico y arquitectura modular consolidados.
+    \item 06/03/2026: estado post-implementación completa con modelos entrenados y evaluados.
+\end{itemize}
+
+Las Figuras~\ref{fig:gantt_parte1}, \ref{fig:gantt_parte2} y \ref{fig:gantt_parte3} presentan la Carta Gantt del proyecto completo, dividida en tres períodos para mayor legibilidad.
+
+% ════════════════════════════════════════════════════════════════
+% PARTE 1: Abril – Julio 2025 (Fases 1–2)
+% ════════════════════════════════════════════════════════════════
+\begin{figure}[!ht]
+\centering
+\begin{ganttchart}[
+    hgrid,
+    vgrid={*{1}{draw=none}, dotted},
+    x unit=0.85cm,
+    y unit title=0.45cm,
+    y unit chart=0.45cm,
+    title height=1,
+    bar height=0.6,
+    bar top shift=0.2,
+    group/.append style={draw=black, fill=blue!30},
+    bar/.append style={fill=blue!50},
+    milestone/.append style={fill=red!70, shape=diamond, inner sep=1.2pt},
+    title label font=\footnotesize,
+    bar label font=\footnotesize,
+    group label font=\footnotesize\bfseries,
+    milestone label font=\footnotesize\itshape,
+]{1}{8}
+
+\gantttitle{2025}{8} \\
+\gantttitle{Abr}{2}
+\gantttitle{May}{2}
+\gantttitle{Jun}{2}
+\gantttitle{Jul}{2} \\
+
+% FASE 1
+\ganttgroup{Fase 1: Formulaci\'{o}n}{1}{4} \\
+\ganttbar{Propuesta conceptual}{1}{1} \\
+\ganttmilestone{Aprobada (18/04)}{1} \\
+\ganttbar{Revisi\'{o}n bibliogr\'{a}fica}{1}{6} \\
+\ganttbar{Segunda propuesta}{2}{3} \\
+\ganttmilestone{Aceptada (03/05)}{3} \\
+
+% FASE 2
+\ganttgroup{Fase 2: Prototipo FPS}{4}{6} \\
+\ganttbar{Escena Unity}{4}{5} \\
+\ganttbar{Jugabilidad base}{5}{6} \\
+\ganttmilestone{Demo FPS (11/06)}{5}
+
+\end{ganttchart}
+\caption[Carta Gantt --- Parte 1 (abril--julio 2025)]{Carta Gantt -- Parte 1 (abril--julio 2025): formulaci\'{o}n del proyecto y prototipado exploratorio del FPS. Los diamantes rojos indican hitos verificables.}
+\label{fig:gantt_parte1}
+\end{figure}
+
+% ════════════════════════════════════════════════════════════════
+% PARTE 2: Agosto – Diciembre 2025 (Fases 3–4)
+% ════════════════════════════════════════════════════════════════
+\begin{figure}[!ht]
+\centering
+\begin{ganttchart}[
+    hgrid,
+    vgrid={*{1}{draw=none}, dotted},
+    x unit=0.85cm,
+    y unit title=0.45cm,
+    y unit chart=0.45cm,
+    title height=1,
+    bar height=0.6,
+    bar top shift=0.2,
+    group/.append style={draw=black, fill=blue!30},
+    bar/.append style={fill=blue!50},
+    milestone/.append style={fill=red!70, shape=diamond, inner sep=1.2pt},
+    title label font=\footnotesize,
+    bar label font=\footnotesize,
+    group label font=\footnotesize\bfseries,
+    milestone label font=\footnotesize\itshape,
+]{1}{10}
+
+\gantttitle{2025}{10} \\
+\gantttitle{Ago}{2}
+\gantttitle{Sep}{2}
+\gantttitle{Oct}{2}
+\gantttitle{Nov}{2}
+\gantttitle{Dic}{2} \\
+
+% FASE 3
+\ganttgroup{Fase 3: Reformulaci\'{o}n}{1}{4} \\
+\ganttbar{An\'{a}lisis de riesgos FPS}{1}{2} \\
+\ganttbar{Cambio de alcance}{2}{3} \\
+\ganttbar{Dise\~{n}o Knucklebones}{3}{4} \\
+
+% FASE 4
+\ganttgroup{Fase 4: Arquitectura}{4}{10} \\
+\ganttbar{Formalizaci\'{o}n matem\'{a}tica}{4}{5} \\
+\ganttbar{Simulador Gym}{5}{7} \\
+\ganttbar{Arquetipos heur\'{i}sticos}{6}{8} \\
+\ganttbar{Features can\'{o}nicas}{7}{9} \\
+\ganttbar{Arquitectura 3 capas}{8}{10}
+
+\end{ganttchart}
+\caption[Carta Gantt --- Parte 2 (agosto--diciembre 2025)]{Carta Gantt -- Parte 2 (agosto--diciembre 2025): reformulaci\'{o}n metodol\'{o}gica del alcance hacia Knucklebones y dise\~{n}o de la arquitectura modular.}
+\label{fig:gantt_parte2}
+\end{figure}
+
+% ════════════════════════════════════════════════════════════════
+% PARTE 3: Enero – Marzo 2026 (Fases 5–8)
+% ════════════════════════════════════════════════════════════════
+\begin{figure}[!ht]
+\centering
+\begin{ganttchart}[
+    hgrid,
+    vgrid={*{1}{draw=none}, dotted},
+    x unit=1.4cm,
+    y unit title=0.45cm,
+    y unit chart=0.45cm,
+    title height=1,
+    bar height=0.6,
+    bar top shift=0.2,
+    group/.append style={draw=black, fill=blue!30},
+    bar/.append style={fill=blue!50},
+    milestone/.append style={fill=red!70, shape=diamond, inner sep=1.2pt},
+    title label font=\footnotesize,
+    bar label font=\footnotesize,
+    group label font=\footnotesize\bfseries,
+    milestone label font=\footnotesize\itshape,
+    today=5,
+    today label=Hoy,
+    today label font=\footnotesize\itshape,
+    today rule/.style={draw=red!60, ultra thick, dashed},
+]{1}{6}
+
+\gantttitle{2026}{6} \\
+\gantttitle{Ene}{2}
+\gantttitle{Feb}{2}
+\gantttitle{Mar}{2} \\
+
+% FASE 5
+\ganttgroup{Fase 5: Entrenamiento}{1}{4} \\
+\ganttbar{PPO (3 especialistas)}{1}{2} \\
+\ganttbar{Destilaci\'{o}n PPO$\to$DT}{2}{3} \\
+\ganttbar{NEAT multi-seed}{2}{4} \\
+\ganttbar{KMeans + Response Tables}{3}{4} \\
+\ganttmilestone{Arq. consolidada (20/02)}{3} \\
+
+% FASE 6
+\ganttgroup{Fase 6: Evaluaci\'{o}n}{3}{5} \\
+\ganttbar{Evaluaci\'{o}n cruzada}{3}{4} \\
+\ganttbar{An\'{a}lisis estad\'{i}stico}{4}{5} \\
+\ganttbar{Ablation study}{4}{5} \\
+
+% FASE 7
+\ganttgroup{Fase 7: Integraci\'{o}n Unity}{3}{5} \\
+\ganttbar{Middleware Flask}{3}{4} \\
+\ganttbar{Bridge Unity--Python}{4}{5} \\
+\ganttmilestone{Sistema completo (06/03)}{5} \\
+
+% FASE 8
+\ganttgroup{Fase 8: Redacci\'{o}n}{4}{6} \\
+\ganttbar{Informe final}{4}{6} \\
+\ganttbar{Correcciones}{5}{6}
+
+\end{ganttchart}
+\caption[Carta Gantt --- Parte 3 (enero--marzo 2026)]{Carta Gantt -- Parte 3 (enero--marzo 2026): entrenamiento de modelos, evaluaci\'{o}n experimental, integraci\'{o}n con Unity y redacci\'{o}n del informe. La l\'{i}nea roja punteada indica la fecha de cierre.}
+\label{fig:gantt_parte3}
+\end{figure}

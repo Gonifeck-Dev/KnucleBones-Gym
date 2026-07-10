@@ -38,3 +38,20 @@ Desktop.ini
 # gym/data/results/runs/
 
 /gym/data/results/runs/
+
+# Unrelated personal files (not part of this project)
+/arcriders.pdf
+/arcridersInterview.pdf
+/docs.zip
+/results.zip
+/tesis.zip
+/_check_*.py
+/_tmp_*.py
+
+# Stray duplicate response tables (organized copies live under gym/data/models/systems/)
+/response_table_dt
+/response_table_neat
+/response_table_ppo
+
+# Redundant zip of an already-included folder
+/Tesis - Latex/Tesis_Overleaf.zip

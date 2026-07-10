@@ -1,0 +1,27 @@
+\babel@toc {spanish}{}\relax 
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {3.1}{\ignorespaces Resumen de enfoques de adaptación en casos industriales y académicos}}{20}{table.caption.11}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces Ejemplo de transición: el jugador 1 coloca un dado de valor 4 en la columna 1}}{25}{table.caption.13}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {5.1}{\ignorespaces Tiempos de entrenamiento y tamaño de modelos}}{34}{table.caption.17}%
+\contentsline {table}{\numberline {5.2}{\ignorespaces Brecha de datos: requerimiento de entrenamiento vs. disponibilidad en sesión real}}{36}{table.caption.20}%
+\contentsline {table}{\numberline {5.3}{\ignorespaces Análisis de sensibilidad: brecha de datos bajo tres escenarios de sesión humana}}{37}{table.caption.22}%
+\contentsline {table}{\numberline {5.4}{\ignorespaces Calidad de destilación: accuracy de los DT respecto al PPO teacher}}{37}{table.caption.23}%
+\contentsline {table}{\numberline {5.5}{\ignorespaces Winrate decidido de cada sistema vs cada oponente (5,000 partidas)}}{38}{table.caption.24}%
+\contentsline {table}{\numberline {5.6}{\ignorespaces System DT --- KMeans + Decision Trees destilados de PPO}}{39}{table.caption.25}%
+\contentsline {table}{\numberline {5.7}{\ignorespaces System PPO --- KMeans + PPO especialistas directos}}{39}{table.caption.26}%
+\contentsline {table}{\numberline {5.8}{\ignorespaces System NEAT --- KMeans + NEAT especialistas directos (multi-seed)}}{39}{table.caption.27}%
+\contentsline {table}{\numberline {5.9}{\ignorespaces Valores p del z-test entre pares de sistemas (corregidos por Bonferroni)}}{39}{table.caption.28}%
+\contentsline {table}{\numberline {5.10}{\ignorespaces Ablation study: generalista vs adaptativo vs oráculo}}{42}{table.caption.33}%
+\contentsline {table}{\numberline {5.11}{\ignorespaces Dominancia de especialistas en las response tables}}{42}{table.caption.34}%
+\contentsline {table}{\numberline {5.12}{\ignorespaces Evaluación cruzada de NEAT especialistas (winrate decidido)}}{43}{table.caption.35}%
+\contentsline {table}{\numberline {5.13}{\ignorespaces Evaluación cruzada de PPO especialistas (winrate decidido)}}{43}{table.caption.36}%
+\contentsline {table}{\numberline {5.14}{\ignorespaces Evaluación cruzada de DT especialistas (winrate decidido)}}{43}{table.caption.37}%
+\contentsline {table}{\numberline {5.15}{\ignorespaces Resumen de generalización por familia}}{44}{table.caption.38}%
+\contentsline {table}{\numberline {5.16}{\ignorespaces Efecto de la estrategia de entrenamiento en NEAT vs greedy}}{45}{table.caption.40}%
+\contentsline {table}{\numberline {5.17}{\ignorespaces Comparativa de paradigmas: rendimiento vs costo}}{47}{table.caption.42}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }

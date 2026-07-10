@@ -1,23 +1,23 @@
 {
   "dataset_name": "bc__teacher_rl_ppo_gym_data_models_rl_ppo_vs_heuristic_spread.zip__vs_heuristic_spread__eps50000__seed123",
-  "created_utc": "20260304_023838",
+  "created_utc": "20260305_060146",
   "episodes": 50000,
   "seed": 123,
   "teacher": "rl:PPO:gym/data/models/rl/PPO__vs_heuristic_spread.zip",
   "opponent": "heuristic:spread",
-  "n_samples": 585609,
+  "n_samples": 585212,
   "n_features": 21,
   "format": "npz (X,y)",
   "feature_extractor": "gym.policies.utils.features.extract_features",
   "turn_protocol": "die=env.roll_die(); obs=env._get_obs(die); step(action, dice_value=die)",
   "notes": "Behavior cloning dataset.",
-  "wall_time_seconds": 296.223,
-  "episodes_per_second": 168.79,
-  "dataset_size_bytes": 5966796,
+  "wall_time_seconds": 327.468,
+  "episodes_per_second": 152.69,
+  "dataset_size_bytes": 5952961,
   "action_distribution": {
-    "0": 231852,
-    "1": 213655,
-    "2": 140102
+    "0": 230477,
+    "1": 205431,
+    "2": 149304
   },
-  "action_balance_ratio": 0.6043
+  "action_balance_ratio": 0.6478
 }

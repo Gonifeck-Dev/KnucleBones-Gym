@@ -1,0 +1,55 @@
+\chapter*{Glosario}
+\addcontentsline{toc}{chapter}{Glosario}
+
+\begin{description}
+\item[Juego Inmutable] Principio arquitectónico donde el motor del juego no contiene lógica específica de agentes de inteligencia artificial, limitándose a exponer estado y recibir acciones.
+
+\item[Arquitectura Plug-and-Play] Diseño modular que permite intercambiar agentes de IA sin modificar el núcleo del videojuego.
+
+\item[Middleware] Capa intermedia encargada de recibir el estado del juego, procesarlo, enrutar la decisión del agente y registrar métricas experimentales.
+
+\item[Función de Transición] Función determinista $T(s,a)=s'$ que define cómo evoluciona el estado del entorno tras aplicar una acción.
+
+\item[Equivalencia Funcional] Propiedad mediante la cual dos implementaciones del entorno producen el mismo estado resultante ante las mismas entradas.
+
+\item[Golden Logs] Trazas generadas desde el entorno Unity utilizadas como referencia para validar la equivalencia del simulador externo.
+
+\item[Política Baseline] Política heurística determinista utilizada como referencia experimental.
+
+\item[Política Paramétrica] Política cuyo comportamiento depende de un conjunto explícito de pesos ajustables.
+
+\item[Aleatoriedad Acotada] Mecanismo que introduce variabilidad controlada mediante un margen relativo $\epsilon$ sin alterar el rendimiento competitivo principal.
+
+\item[EvaluationMode] Modo experimental donde se fija la semilla del generador aleatorio para garantizar reproducibilidad.
+
+\item[Winrate] Proporción de partidas ganadas respecto al total evaluado.
+
+\item[Diferencial de Puntaje] Diferencia promedio de puntaje entre dos agentes evaluados.
+
+\item[Latencia de Decisión] Tiempo requerido por un agente para seleccionar una acción en un turno.
+
+\item[Reproducibilidad Experimental] Capacidad de replicar resultados bajo mismas condiciones iniciales y configuración de semillas.
+
+\item[Imitation Learning] Enfoque de aprendizaje supervisado donde un modelo es entrenado para aproximar las decisiones de una política base.
+
+\item[Behavior Cloning] Técnica de aprendizaje por imitación donde un modelo (estudiante) se entrena con pares estado-acción generados por otro modelo (profesor o \textit{teacher}).
+
+\item[Destilación de Conocimiento] Proceso de transferir el comportamiento aprendido de un modelo complejo a uno más liviano, preservando la mayor fidelidad posible.
+
+\item[Response Table] Tabla de mapeo que asocia cada cluster (perfil de oponente) con el especialista más efectivo para ese perfil.
+
+\item[Multi-seed Real] Técnica de entrenamiento donde cada genoma o modelo se evalúa contra múltiples semillas simultáneamente, promediando fitness para prevenir sobreajuste a una secuencia determinista particular.
+
+\item[Sistema Adaptativo] Combinación de un perfilador (KMeans), una tabla de respuesta y un conjunto de especialistas que permite seleccionar dinámicamente la mejor estrategia en tiempo de ejecución.
+
+\item[Especialista] Modelo de IA entrenado específicamente contra un estilo de juego particular (por ejemplo, greedy, denial o spread).
+
+\item[Generalista] Modelo de IA que presenta buen rendimiento contra múltiples estilos sin estar especializado en ninguno.
+
+\item[Aprendizaje Online Pleno] Forma de adaptación donde se actualizan los pesos o parámetros del modelo durante la partida, utilizando las interacciones en curso como datos de entrenamiento. Requiere ejecutar algoritmos de optimización en tiempo real.
+
+\item[Adaptación Online por Selección] Forma de adaptación donde no se actualizan los pesos del modelo en runtime. Se mantiene un catálogo de políticas pre-entrenadas y se selecciona la más adecuada en función del perfil del oponente, requiriendo únicamente inferencia.
+
+\item[Brecha de Datos] Relación entre el volumen de datos requerido para entrenar un modelo funcional y el volumen disponible en una sesión real contra un jugador humano. Valores altos indican inviabilidad práctica del entrenamiento online.
+\end{description}
+\vfill

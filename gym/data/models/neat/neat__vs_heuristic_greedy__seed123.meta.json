@@ -1,0 +1,19 @@
+{
+  "created_utc": "20260304_210909",
+  "generations": 300,
+  "episodes_per_genome": 100,
+  "seed": 123,
+  "seed_rotation": true,
+  "seed_rotation_prime": 10007,
+  "opponent": "heuristic:greedy",
+  "config_path": "gym/config/neat/neat_config.ini",
+  "genome_path": "gym\\data\\models\\neat\\neat__vs_heuristic_greedy__seed123.pkl",
+  "fitness": 0.8753200000000001,
+  "obs_features": 21,
+  "feature_extractor": "gym.policies.utils.features.extract_features",
+  "wall_time_seconds": 1671.798,
+  "genome_size_bytes": 6358,
+  "peak_memory_mb": null,
+  "generation_log": "gym\\data\\models\\neat\\neat__vs_heuristic_greedy__seed123.generation_log.jsonl",
+  "num_workers": 10
+}

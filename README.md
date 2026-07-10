@@ -1,14 +1,25 @@
 # Knucklebones AI Gym
 
 > **Tesis**: *Rendimiento y desempeño del aprendizaje de distintas inteligencias artificiales en un entorno de videojuego offline*
+> **Estado**: Entrenamiento completado — Marzo 2026
 
 Plataforma de entrenamiento y evaluación de IAs adaptativas para el juego de mesa **Knucklebones** (Cult of the Lamb). Ejecutado 100% offline en hardware local.
+
+## Resultados Finales
+
+| Sistema | Winrate | IC 95% | Significancia |
+|---------|:-------:|:------:|:-------------:|
+| **System NEAT** | **0.653** | [0.645, 0.660] | Superior (p < 0.003) |
+| System DT | 0.608 | [0.600, 0.616] | Equivalente a PPO |
+| System PPO | 0.604 | [0.597, 0.612] | Equivalente a DT |
+
+NEAT con multi-seed real (3 seeds × 300 gen) es significativamente superior a PPO y DT destilado. DT es la mejor opción práctica si se prioriza interpretabilidad.
 
 ## Hipótesis
 
 El *aprendizaje online pleno* (entrenar mientras se juega) es costoso e inestable en hardware local. Sin embargo, la **adaptación online por selección** (player modeling + gating) puede entregar adaptabilidad real con menor costo, combinando:
 
-1. Agentes fuertes entrenados offline (**PPO**)
+1. Agentes fuertes entrenados offline (**PPO**, **NEAT**)
 2. Destilación a modelos livianos e interpretables (**DT**)
 3. Perfilado del oponente con **KMeans** (ventana temporal)
 4. Selección del mejor especialista por cluster (**Response Table**)
@@ -142,6 +153,7 @@ python -m gym.scripts.utils.artifacts_doctor --fix
 | `docs/02_arquitectura_pipeline.md` | Pipeline, estructura, reglas, features |
 | `docs/03_resultados_experimentales.md` | Hallazgos, tabla de runs, interpretaciones |
 | `docs/04_referencia_scripts.md` | Referencia de cada script: parámetros, salidas, métricas |
+| `docs/05_handoff_unity.md` | Especificación técnica para integración con Unity |
 
 ## Dependencias
 

@@ -1,0 +1,136 @@
+\usepackage[spanish]{babel}
+\addto\captionsspanish{
+\def\bibname{Referencias}
+\def\tablename{Tabla}
+}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,      
+    urlcolor=blue,
+    citecolor=blue
+}
+\usepackage{rotating}
+%%\usepackage{algorithm}
+%\usepackage{algpseudocode}
+%\usepackage[noend]{algpseudocode}
+\usepackage{siunitx}
+\usepackage{mathtools}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{anysize}
+\usepackage{newtxtext,newtxmath}
+%\usepackage{txfonts}
+\usepackage{wrapfig} %figura entre texto
+%\usepackage{times}
+\usepackage{listings}
+\usepackage{acronym}
+\usepackage{array}
+\usepackage{textcomp}
+\usepackage{fancyvrb}
+\usepackage{fancyhdr}
+\usepackage{wallpaper}
+\usepackage{verbatim}%Agregado por Luis
+\usepackage{latexsym}
+\usepackage{url}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{lmodern}
+\usepackage{eso-pic}
+\usepackage{subfig}
+%\usepackage{amssymb}
+\usepackage{color}
+\usepackage{ragged2e}
+\usepackage[all]{xy}
+\usepackage{xspace,epic,eepic}
+\usepackage{algorithmic}
+\usepackage[ruled,vlined]{algorithm2e}
+%\usepackage[ruled,vlined,linesnumbered,titlenotnumbered, %portuguese]{algorithm2e}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, shapes.geometric, calc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{pgfgantt}
+\usepackage{enumitem}
+\setlist{topsep=0pt,noitemsep}
+\setcounter{tocdepth}{3}
+\marginsize{3cm}{2.5cm}{2.5cm}{2.5cm}
+
+%Definicion de Colores
+\definecolor{gray97}{gray}{.97}
+\definecolor{gray75}{gray}{.75}
+\definecolor{gray45}{gray}{.45}
+\definecolor{listinggray}{gray}{0.9}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\newcommand\rojo[1]{\textcolor[rgb]{1,0,0}{\textbf{#1}}}
+\newcommand\red[1]{\textcolor[rgb]{1.00,0.00,0.00}{#1}}
+\newcommand\azul[1]{\textcolor[rgb]{0,0,1}{\textbf{#1}}}
+\newcommand\blue[1]{\textcolor[rgb]{0,0,1}{{#1}}}
+\newcommand\verde[1]{\textcolor[rgb]{0,.5,0.2}{\textbf{#1}}}
+\newcommand\naranjo[1]{\textcolor[rgb]{1.00,0.36,0.06}{\textbf{#1}}}
+%\ifCLASSINFOpdf
+%\else
+%\fi
+%\hyphenation{pa-la-bra}
+
+\lstset{
+	%backgroundcolor=\color{lbcolor},
+	tabsize=4,
+	rulecolor=,
+	language=SQL,
+        basicstyle=\small,
+        upquote=true,
+        aboveskip={1.5\baselineskip},
+        columns=fixed,
+        showstringspaces=false,
+        extendedchars=true,
+        breaklines=true,
+        prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+        %frame=single,
+        showtabs=false,
+        showspaces=false,
+        showstringspaces=false,
+        identifierstyle=\ttfamily,
+        keywordstyle=\color[rgb]{0,0,0},
+        commentstyle=\color[rgb]{0,0,0},
+        stringstyle=\color[rgb]{0,0,0},
+}
+
+
+%\renewcommand{\labelenumi}{\arabic{enumi}.} % (1., 2., 3.,...)
+%\renewcommand{\labelenumi}{\roman{enumi}.} %  (i., ii., iii.,...)
+%\renewcommand{\labelenumi}{\Roman{enumi}.} %  (I., II., III.,...)
+%\renewcommand{\labelenumi}{\alph{enumi}.}   % (a., b., c.,...)
+\renewcommand{\labelenumi}{(\alph{enumi})} % [(a), (b), (c),...]
+%\renewcommand{\labelenumi}{\Alph{enumi}.}  %  (A., B., C.,...)
+
+
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{teorema}[theorem]{Teorema}
+\newtheorem{lem}{Theorem}[chapter]
+\newtheorem{lema}[lem]{Lema}
+\newtheorem{prop}{Theorem}[chapter]
+\newtheorem{proposition}[prop]{Proposición}
+\newtheorem{coro}{Theorem}[chapter]
+\newtheorem{corolario}[coro]{Corolario}
+\newtheorem{exam}{Theorem}[chapter]
+\newtheorem{example}[exam]{Ejemplo}
+\newtheorem{test}{Theorem}[chapter]
+\newtheorem{prueba}[test]{Prueba}
+\newtheorem{defi}{Theorem}[chapter]
+\newtheorem{definition}[defi]{Definición}
+\newtheorem{obs}{Theorem}[chapter]
+\newtheorem{observacion}[obs]{Observación}
+
+\newcommand{\keywords}[1]{\par\addvspace\baselineskip
+\noindent\keywordname\enspace\ignorespaces#1}
+\renewcommand{\abstractname}{\prefacesection{Resumen}}
+\renewcommand{\listtablename}{Índice de Tablas}
+\renewcommand{\tablename}{Tabla}
+\renewcommand{\refname}{Bibliografía}
+\newcommand{\boxtheorem}{\hfill $\Box$}
+%%%%%%%%IEEE Palabras Claves
+%\renewcommand{\IEEEkeywords}{\textbf{\emph{Palabras Clave---}}}

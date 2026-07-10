@@ -17,4 +17,7 @@ neat-python>=0.92
 stable-baselines3>=2.1
 gymnasium>=0.29
 
-
+# PyTorch — instalar con CUDA si hay GPU NVIDIA:
+#   pip install torch --index-url https://download.pytorch.org/whl/cu126
+# Si no hay GPU:
+#   pip install torch

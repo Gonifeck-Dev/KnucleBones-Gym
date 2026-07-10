@@ -1,0 +1,12 @@
+Mapeo de variables para Figura de Diferencial de Puntaje:
+============================================================
+
+A1: Sys DT vs denial
+A2: Sys DT vs greedy
+A3: Sys DT vs spread
+B1: Sys NEAT vs denial
+B2: Sys NEAT vs greedy
+B3: Sys NEAT vs spread
+C1: Sys PPO vs denial
+C2: Sys PPO vs greedy
+C3: Sys PPO vs spread

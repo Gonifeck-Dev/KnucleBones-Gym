@@ -1,0 +1,17 @@
+{
+  "created_utc": "20260304_085600",
+  "generations": 100,
+  "episodes_per_genome": 100,
+  "seed": 123,
+  "opponent": "heuristic:spread",
+  "config_path": "gym/config/neat/neat_config.ini",
+  "genome_path": "gym\\data\\models\\neat\\neat__vs_heuristic_spread.pkl",
+  "fitness": 0.9463600000000008,
+  "obs_features": 21,
+  "feature_extractor": "gym.policies.utils.features.extract_features",
+  "wall_time_seconds": 748.236,
+  "genome_size_bytes": 2003,
+  "peak_memory_mb": null,
+  "generation_log": "gym\\data\\models\\neat\\neat__vs_heuristic_spread.generation_log.jsonl",
+  "num_workers": 10
+}
