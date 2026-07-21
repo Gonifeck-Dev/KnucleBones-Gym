@@ -40,6 +40,30 @@ Response Table (cluster → mejor DT)
 SystemPolicy = KMeans + DT especialistas = adaptación online sin entrenamiento
 ```
 
+## Mecánica de turnos y reproducibilidad
+
+Reglas completas en `docs/05_handoff_unity.md` (§2). Resumen para poder replicar el experimento:
+
+1. El jugador activo **tira un dado** (1-6).
+2. Elige una **columna** (0, 1 o 2) con al menos una fila vacía.
+3. El dado se coloca en la primera fila vacía de esa columna (de abajo hacia arriba).
+4. **Regla de destrucción**: todos los dados del oponente con el mismo valor en la misma columna se eliminan.
+5. Se recalculan puntajes: `Score(columna) = Σ v × (cantidad de v en la columna)²`.
+6. La partida termina cuando algún jugador completa su tablero (9 celdas); gana el mayor puntaje total.
+
+`KnucklebonesEnv` (`gym/env/knucklebones_env.py`) es la única fuente de verdad de estas reglas — todo entrenamiento/evaluación sigue el mismo protocolo (`roll_die → _get_obs → select_action → step`).
+
+**Registro turno a turno**: cada corrida de `evaluate_any.py` genera, en `gym/data/results/runs/<stamp>/`:
+
+| Archivo | Contenido |
+|---------|-----------|
+| `config.json` | Configuración de la corrida |
+| `turns.jsonl` | Registro turno a turno (incluye `latency_ms`) — el log grande que permite auditar cada decisión |
+| `games.jsonl` | Registro partida a partida |
+| `summary.json` | Resumen con todas las métricas |
+
+**Reproducibilidad**: todas las corridas usan `--seed` para fijar reset del entorno, reset de políticas y generación de episodios, de modo que las comparaciones entre sistemas sean justas y el experimento sea replicable con los mismos artefactos (`*.meta.json`) documentados en `docs/04_referencia_scripts.md`.
+
 ## Estructura
 
 ```
