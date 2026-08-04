@@ -1,0 +1,14 @@
+# GitHub clasifica el repositorio por bytes de código fuente. Los fuentes LaTeX
+# de la tesis (42 archivos, ~528 KB) pesan más que el código Python (~192 KB),
+# y sin estas reglas el repo figura como proyecto TeX en vez de Python.
+
+*.tex   linguist-documentation
+*.bib   linguist-documentation
+*.bst   linguist-documentation
+*.cls   linguist-documentation
+*.sty   linguist-documentation
+
+# Artefactos de compilación de LaTeX
+*.aux   linguist-generated
+*.toc   linguist-generated
+*.out   linguist-generated
