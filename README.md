@@ -1,13 +1,60 @@
 # Knucklebones AI Gym
 
-> **Tesis**: *Rendimiento y desempeño del aprendizaje de distintas inteligencias artificiales en un entorno de videojuego offline*
-> **Estado**: Entrenamiento completado, marzo 2026
+**¿Puede una IA aprender de un jugador mientras juega, en un computador doméstico?**
 
-Plataforma de entrenamiento y evaluación de IAs adaptativas para el juego de mesa **Knucklebones** (Cult of the Lamb). Ejecutado 100% offline en hardware local (sin GPU dedicada de datacenter).
+Con PPO, NEAT y árboles de decisión destilados, no: una sesión de juego no da datos suficientes. Este repositorio mide cuántos faltan y construye una alternativa que sí corre en CPU: perfilar al oponente y elegir entre especialistas ya entrenados.
 
-**Sobre Knucklebones no existe tratamiento académico publicado**: solo proyectos aislados de MCTS/Q-Learning en GitHub. Este proyecto compara tres paradigmas de RL (PPO, NEAT, destilación a árboles), cuantifica por qué el aprendizaje online pleno *no* es viable con datos de un solo humano, y propone y valida una alternativa: adaptación online por selección de especialistas. El valor no está en cada pieza por separado, todas existen en la literatura, sino en la **integración cuantificada de las tres, en hardware de consumo, replicada end-to-end**.
+![Partida de Knucklebones contra el sistema NEAT](docs/img/partida.png)
 
-## Resultados Finales
+Tesis de Ingeniería de Ejecución en Computación e Informática, Universidad del Bío-Bío, 2026: *Rendimiento y desempeño del aprendizaje de distintas inteligencias artificiales en un entorno de videojuego offline*. El juego es **Knucklebones**, el minijuego de dados de *Cult of the Lamb*.
+
+## En tres números
+
+| Número | Qué mide |
+|:------:|----------|
+| **222×** | Lo que le falta a una sesión de juego larga (1,800 muestras) para llegar a las 400,000 con que se entrenó PPO |
+| **< 33 min** | Entrenamiento de cada especialista, sin GPU |
+| **< 1 ms** | Decisión por turno del sistema completo en CPU (media de 0.2 a 0.5 ms) |
+
+## 1. El problema: la brecha de datos
+
+Una partida dura unos 18 turnos. Un jugador que juega entre 10 y 100 partidas genera entre 180 y 1,800 muestras. Los tres paradigmas se entrenaron con dos a cuatro órdenes de magnitud más:
+
+| Paradigma | Datos de entrenamiento | Datos en una sesión | Brecha |
+|-----------|-----------------------:|--------------------:|-------:|
+| PPO (400k timesteps) | ~400,000 muestras | 180 a 1,800 | 222× a 2,222× |
+| DT (behavior cloning) | ~500,000 muestras | 180 a 1,800 | 278× a 2,778× |
+| NEAT (300 gen × 150 pop) | ~4,590,000 episodios | 180 a 1,800 | 2,550× a 25,500× |
+
+Más cómputo no cierra la brecha: el límite es cuántas partidas está dispuesta a jugar una persona.
+
+> Las muestras por sesión son una estimación, no una medición con jugadores. Los datos de entrenamiento son el presupuesto que se usó, no un mínimo medido.
+
+## 2. La alternativa: adaptación por selección
+
+Durante la partida no se entrena nada. El sistema observa al oponente, lo clasifica y le asigna el especialista que mejor responde a ese estilo.
+
+```mermaid
+flowchart LR
+    A["Jugadas del oponente<br/>(ventana de 6 turnos)"] --> B["Perfilador KMeans<br/>(k = 4)"]
+    B --> C["Response table<br/>cluster → especialista"]
+    C --> D["Especialista entrenado offline<br/>PPO · NEAT · árbol destilado"]
+    D --> E["Acción<br/>columna 0, 1 o 2"]
+```
+
+Los especialistas se entrenan antes, contra cuatro arquetipos heurísticos (greedy, denial, spread, random):
+
+| Paradigma | Entrenamiento por especialista | Tamaño del modelo |
+|-----------|-------------------------------:|------------------:|
+| PPO | 6 a 23 min | 162 KB |
+| NEAT (multi-seed, 300 generaciones) | 30 a 33 min | 2.4 a 4.2 KB |
+| DT destilado desde PPO | < 3 s | 134 a 153 KB |
+
+El árbol destilado conserva más del 93% de fidelidad a su teacher PPO.
+
+## 3. Resultados
+
+Cada sistema jugó 5,000 partidas contra cada uno de tres oponentes heurísticos.
 
 | Sistema | Winrate | IC 95% | Significancia |
 |---------|:-------:|:------:|:-------------:|
@@ -15,45 +62,47 @@ Plataforma de entrenamiento y evaluación de IAs adaptativas para el juego de me
 | System DT | 0.608 | [0.600, 0.616] | Equivalente a PPO |
 | System PPO | 0.604 | [0.597, 0.612] | Equivalente a DT |
 
-NEAT con multi-seed real (3 seeds × 300 gen) es significativamente superior a PPO y DT destilado. DT es la mejor opción práctica si se prioriza interpretabilidad.
+### ¿Aporta la selección?
 
-## Hipótesis
+| Familia | Mejor especialista fijo | Sistema adaptativo | Oráculo (selección perfecta) |
+|---------|:-----------------------:|:------------------:|:----------------------------:|
+| DT | 0.618 | 0.608 | 0.619 |
+| PPO | 0.610 | 0.604 | 0.617 |
+| NEAT | 0.651 | 0.653 | 0.651 |
 
-El *aprendizaje online pleno* (entrenar mientras se juega) es costoso e inestable en hardware local. Sin embargo, la **adaptación online por selección** (player modeling + gating) puede entregar adaptabilidad real con menor costo, combinando:
+El sistema adaptativo iguala al mejor especialista fijo y no lo supera (diferencias de −0.010 a +0.002). El oráculo muestra por qué: ni la selección perfecta sumaría más de 0.008, porque un solo especialista ya rinde bien contra todos los estilos. Knucklebones tiene poca diversidad estratégica; en dominios con más, se esperaría un beneficio mayor.
 
-1. Agentes fuertes entrenados offline (**PPO**, **NEAT**)
-2. Destilación a modelos livianos e interpretables (**DT**)
-3. Perfilado del oponente con **KMeans** (ventana temporal)
-4. Selección del mejor especialista por cluster (**Response Table**)
+### Latencia
 
-## Related Work: posicionamiento frente a la literatura
+Decisión completa por turno (perfilado, selección e inferencia), medida en los `turns.jsonl` de las corridas publicadas:
 
-**Sobre Knucklebones específicamente**: sin tratamiento académico previo (confianza baja: ausencia en una búsqueda dedicada, no prueba de inexistencia). La integración tri-paradigma, la cuantificación de la brecha de datos y la adaptación por selección, todo en hardware local sin GPU, no aparece replicada en ninguna fuente encontrada.
+| Sistema | Media | p95 | p99 |
+|---------|------:|----:|----:|
+| System DT | 0.22 ms | 0.43 ms | 0.57 ms |
+| System PPO | 0.46 ms | 0.81 ms | 1.02 ms |
 
-**PPO vs NEAT.** La literatura comparativa coincide con el patrón observado acá: la neuroevolución converge más rápido al inicio; RL con gradientes gana en rendimiento final con suficiente entrenamiento (caso self-driving NPC[^1]; Flappy Bird, NEAT vs DQN[^2]). Que NEAT multi-seed gane acá (WR 0.653) en un dominio pequeño con presupuesto acotado es consistente: con cómputo limitado, la ventaja inicial de la neuroevolución domina.
+### Limitaciones
 
-**Destilación PPO → árboles de decisión.** Línea fundacional: VIPER[^3], árboles destilados desde DNN+Q-function que retienen el rendimiento del teacher y habilitan verificación formal. Continuaciones: MAVIPER, destilación multi-agente[^4]; árboles programáticos editables[^5]; optimización directa de árboles[^6]. Este proyecto replica el hallazgo central (fidelidad >93%, WR del alumno ≈ teacher) con behavior cloning directo, más simple que VIPER.
+- Los oponentes de entrenamiento y evaluación son heurísticos, no jugadores humanos.
+- El perfilador asigna 2 de 4 clusters al estilo denial (silhouette 0.232): no separa bien todos los estilos.
+- Los resultados valen para los paradigmas evaluados. Meta-RL y aprendizaje en contexto apuntan a esta misma brecha y quedan como trabajo futuro.
 
-**Perfilado de oponente + selección de especialistas.** Patrón ancestral: Missura & Gärtner[^7], clustering de tipos de jugador y predicción desde trazas cortas para ajustar dificultad, junto con el survey de Bakkes/Spronck[^8]. Precedente directo del "switching": controladores rule-based conmutables en fighting games (Ishihara et al.). Estado del arte 2026: StratFormer, mismo patrón en versión continua (GTO → best-response)[^9].
+Detalle completo en [`docs/03_resultados_experimentales.md`](docs/03_resultados_experimentales.md) y en [`gym/data/results/reports/`](gym/data/results/reports/).
 
-**Viabilidad del aprendizaje online, el hallazgo central.** El contrapunto obligado: rtNEAT / NERO[^10] demostró aprendizaje real durante el gameplay, pero con experiencia generada por muchos agentes simultáneos, en un juego diseñado alrededor del entrenamiento. No hay contradicción con este proyecto, hay una frontera: NERO funciona cuando el diseño multiplica la generación de datos; acá, con datos de un solo humano (180-1,800 por sesión vs. 400K-4.6M requeridas), el aprendizaje online pleno no alcanza, y la selección de especialistas es la salida viable. Validación industrial del mismo patrón offline-first: EA entrena offline con datos pre-recolectados y despliega política congelada en producción para EA FC 25[^11].
+## Ejecución rápida
 
-**Trabajo futuro (meta-learning).** Cita canónica: MAML[^12], adaptación rápida con pocas muestras vía meta-entrenamiento. La línea meta-RL es la vía publicada para cerrar la brecha de datos que este proyecto mide.
+```bash
+pip install -r requirements.txt
 
-[^1]: Comparación de comportamiento de NPCs self-driving (NEAT vs RL con gradientes). Springer, 2021.
-[^2]: NEAT vs DQN en Flappy Bird. [arXiv:2207.14140](https://arxiv.org/abs/2207.14140)
-[^3]: Bastani, Pu & Solar-Lezama. *Verifiable Reinforcement Learning via Policy Extraction* (VIPER). NeurIPS 2018. [arXiv:1805.08328](https://arxiv.org/abs/1805.08328)
-[^4]: MAVIPER: destilación multi-agente. [arXiv:2205.12449](https://arxiv.org/abs/2205.12449)
-[^5]: Árboles programáticos editables por búsqueda local. [arXiv:2405.14956](https://arxiv.org/abs/2405.14956)
-[^6]: Optimización directa de árboles de decisión. [arXiv:2408.11632](https://arxiv.org/abs/2408.11632)
-[^7]: Missura & Gärtner. Clustering de tipos de jugador para ajuste de dificultad. 2009.
-[^8]: Bakkes & Spronck. Survey de player modeling y dynamic difficulty adjustment. 2012.
-[^9]: StratFormer: opponent modeling adaptativo (GTO → best-response). 2026.
-[^10]: Stanley et al. rtNEAT / NERO: aprendizaje en tiempo real durante el gameplay. 2005.
-[^11]: Sestini et al. / EA SEED. RL sample-efficient en EA FC 25. Oct 2025.
-[^12]: Finn, Abbeel & Levine. *Model-Agnostic Meta-Learning* (MAML). 2017. [arXiv:1703.03400](https://arxiv.org/abs/1703.03400)
+# Validar el entorno
+python -m gym.scripts.utils.test_env_sanity
 
-## Pipeline
+# 5,000 partidas: sistema adaptativo con árboles contra el heurístico denial
+python -m gym.scripts.utils.evaluate_any --p0 "system:gym/config/systems/system_dt.json" --p1 "heuristic:denial" --games 5000
+```
+
+<details>
+<summary><strong>Pipeline completo de entrenamiento</strong> (click para expandir)</summary>
 
 ```
 Arquetipos heurísticos (greedy/denial/spread/random)
@@ -68,16 +117,6 @@ Response Table (cluster → mejor DT)
         ↓ orquestar
 SystemPolicy = KMeans + DT especialistas = adaptación online sin entrenamiento
 ```
-
-## Reglas de oro
-
-| Regla | Aplica en | ✅ Puede | ❌ No puede |
-|-------|-----------|----------|-------------|
-| **A** | `policies/` | Inferir acciones, estado por partida | Entrenar, escribir archivos |
-| **B** | `scripts/` | Entrenar, evaluar, generar datos | Duplicar lógica de features/heurísticas |
-| **C** | `data/` | Almacenar todo lo generado | Contener código |
-
-## Ejecución rápida
 
 ```bash
 # 1. Validar entorno
@@ -111,6 +150,16 @@ python -m gym.scripts.utils.analysis_toolkit
 python -m gym.scripts.utils.artifacts_doctor --fix
 ```
 
+</details>
+
+## Reglas del código
+
+| Regla | Aplica en | ✅ Puede | ❌ No puede |
+|-------|-----------|----------|-------------|
+| **A** | `policies/` | Inferir acciones, estado por partida | Entrenar, escribir archivos |
+| **B** | `scripts/` | Entrenar, evaluar, generar datos | Duplicar lógica de features/heurísticas |
+| **C** | `data/` | Almacenar todo lo generado | Contener código |
+
 ## Documentación
 
 | Documento | Contenido |
@@ -120,12 +169,9 @@ python -m gym.scripts.utils.artifacts_doctor --fix
 | `docs/03_resultados_experimentales.md` | Hallazgos, tabla de runs, interpretaciones |
 | `docs/04_referencia_scripts.md` | Referencia de cada script: parámetros, salidas, métricas |
 | `docs/05_handoff_unity.md` | Especificación técnica para integración con Unity |
+| `docs/06_trabajo_relacionado.md` | Posicionamiento frente a la literatura y al trabajo previo sobre el juego |
 
-## Dependencias
-
-```bash
-pip install -r requirements.txt
-```
+Hecho con Python, Stable-Baselines3, PyTorch, neat-python y scikit-learn.
 
 <details>
 <summary><strong>Mecánica de turnos y reproducibilidad</strong> (click para expandir)</summary>
